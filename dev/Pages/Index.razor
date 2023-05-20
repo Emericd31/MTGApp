@@ -1,0 +1,30 @@
+﻿@page "/"
+@inherits IndexBase
+
+<PageTitle>Index</PageTitle>
+
+<h1>Ma collection MTG</h1>
+
+<p>
+	Bienvenue dans votre gestionnaire de collection de cartes Magic !
+	<br />
+	@if (Collection.Count() == 0)
+	{
+		<p>Elle ne contient pas encore de carte. Vous pouvez en ajouter via l'onglet "Extensions" ou en importer grâce à un fichier .json.</p>
+	}
+	else if (Collection.Count() == 1 && Collection.ElementAt(0).Value.nb == 1)
+	{
+		<p>Elle contient 1 carte</p>
+	}
+	else
+	{
+		<p>Elle contient @Collection.Count() cartes</p>
+	}
+</p>
+
+<div id="cardsList">
+	@for (int i = 0; i < Collection.Count(); i++)
+	{
+		<CardComponent Card="@Collection.ElementAt(i).Value.card" AllowAddToCollection="false" AllowRemoveFromCollection="true" NbCardInCollection="@Collection.ElementAt(i).Value.nb" />
+	}
+</div>

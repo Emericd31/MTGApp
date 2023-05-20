@@ -1,0 +1,22 @@
+﻿@page "/cards"
+@page "/cards/{setCode}"
+@inherits CardsBase
+@inject NavigationManager _nav
+
+<h3>@PageTitle @SetCode (@TotalCards cartes)</h3>
+
+@if (Cards == null)
+{
+	<p><em>Chargement des cartes en cours...</em></p>
+}
+else
+{
+	<button @onclick="@(() => _nav.NavigateTo("/sets"))">Retour</button>
+	<div id="cardsList">
+		@for (int i = 0; i < Cards.Count; i++)
+		{
+			<CardComponent Card="@Cards[i]" AllowAddToCollection="true" AllowRemoveFromCollection="false" />
+		}
+	</div>
+}
+

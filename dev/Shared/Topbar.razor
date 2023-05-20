@@ -1,0 +1,13 @@
+﻿@inherits TopbarBase
+
+<div id="cadre">
+	<div id="save" @onclick="Save">
+		<img src="./save.png" alt="Image" height="30" width="30" >
+		@if (DisplaySaveText)
+		{
+			<p id="saveText">Saved</p>
+		}
+	</div>
+
+	<p id="title">@Title</p>
+</div>

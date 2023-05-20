@@ -1,0 +1,22 @@
+﻿#filters {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    background-color: darkgray;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#searchInput {
+    width: 400px;
+    margin-right: 20px;
+}
+
+#cardsList {
+    display: flex;
+    flex-wrap: wrap;
+}

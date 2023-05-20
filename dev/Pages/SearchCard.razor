@@ -1,0 +1,37 @@
+﻿@page "/searchCard"
+@inherits SearchCardBase
+
+<h1>Rechercher une carte</h1>
+
+<div id="filters">
+	<input id="searchInput" placeholder="Rechercher" @bind-value="@SearchInput" />
+	<input type="button" value="Rechercher" @onclick="@Search" />
+</div>
+
+@if (Cards == null || SearchInput == "")
+{
+	<p><em>Pour effectuer une recherche, saisissez le nom ou une partie du nom dans le champ de saisie puis cliquez sur "Rechercher"</em></p>
+}
+else if (Cards.Count == 0)
+{
+	<p><em>Aucun carte ne correspond à votre recherche !</em></p>
+}
+else
+{
+	<p>Votre recherche comporte @NbCards résultats</p>
+	@if (NbCards > 200)
+	{
+		<p>Seules les 200 premières cartes sont affichées (affinez votre recherche si vous ne trouvez pas la carte que vous cherchez)</p>
+	}
+	@*<button @onclick="@(() => _nav.NavigateTo("/sets"))">Retour</button>*@
+	<div id="cardsList">
+		@for (int i = 0; i < Cards.Count; i++)
+		{
+			<CardComponent Card="@Cards[i]" AllowAddToCollection="true" AllowRemoveFromCollection="false" />
+		}
+	</div>
+}
+
+@code {
+
+}

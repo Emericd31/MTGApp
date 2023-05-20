@@ -1,0 +1,4 @@
+dev/bin/
+dev/obj/
+UserData/
+*.vs

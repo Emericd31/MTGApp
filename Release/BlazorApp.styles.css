@@ -1,0 +1,577 @@
+/* _content/BlazorApp/Pages/Cards.razor.rz.scp.css */
+#cardsList[b-c2qv2uxtgw] {
+    display: flex;
+    flex-wrap: wrap;
+}
+/* _content/BlazorApp/Pages/Index.razor.rz.scp.css */
+#cardsList[b-w6l7chfipm] {
+    display: flex;
+    flex-wrap: wrap;
+}
+/* _content/BlazorApp/Pages/SearchCard.razor.rz.scp.css */
+#filters[b-dt9rz7amvs] {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    background-color: darkgray;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#searchInput[b-dt9rz7amvs] {
+    width: 400px;
+    margin-right: 20px;
+}
+
+#cardsList[b-dt9rz7amvs] {
+    display: flex;
+    flex-wrap: wrap;
+}
+/* _content/BlazorApp/Pages/Sets.razor.rz.scp.css */
+#setsList[b-a3777pej5v] {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+body[b-a3777pej5v] {
+    background-color: darkcyan;
+}
+
+#filters[b-a3777pej5v] {
+    border: 2px solid black;
+    border-radius: 10px;
+    /*height: 200px;*/
+    width: 100%;
+    background-color: darkgray;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.multiselect[b-a3777pej5v] {
+    width: 200px;
+}
+
+.selectBox[b-a3777pej5v] {
+    position: relative;
+}
+
+    .selectBox select[b-a3777pej5v] {
+        width: 100%;
+        font-weight: bold;
+    }
+
+.overSelect[b-a3777pej5v] {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+#checkboxes[b-a3777pej5v] {
+    display: none;
+    border: 1px #dadada solid;
+}
+
+#checkboxes label[b-a3777pej5v] {
+    display: block;
+}
+
+#checkboxes label:hover[b-a3777pej5v] {
+    background-color: #1e90ff;
+}
+
+.toggler-wrapper.style-1 input[type="checkbox"]:checked + .toggler-slider .toggler-knob[b-a3777pej5v] {
+    left: calc(100% - 19px - 3px);
+}
+
+.toggler-wrapper.style-1 .toggler-knob[b-a3777pej5v] {
+    width: calc(25px - 6px);
+    height: calc(25px - 6px);
+    border-radius: 50%;
+    left: 3px;
+    top: 3px;
+    background-color: #fff;
+}
+
+.toggler-wrapper[b-a3777pej5v] {
+    display: block;
+    width: 45px;
+    height: 25px;
+    cursor: pointer;
+    position: relative;
+}
+
+.toggler-wrapper input[type="checkbox"][b-a3777pej5v] {
+    display: none;
+}
+
+.toggler-wrapper input[type="checkbox"]:checked + .toggler-slider[b-a3777pej5v] {
+    background-color: #44cc66;
+}
+
+.toggler-wrapper .toggler-slider[b-a3777pej5v] {
+    background-color: #ccc;
+    position: absolute;
+    border-radius: 100px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.toggler-wrapper .toggler-knob[b-a3777pej5v] {
+    position: absolute;
+    -webkit-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.checkboxGroup[b-a3777pej5v] {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    padding-left: 10px;
+}
+
+.checkboxLabel[b-a3777pej5v] {
+    margin: inherit;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.symbol[b-a3777pej5v] {
+    border: 2px solid black;
+    color: white;
+    padding: 0px;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: inherit
+}
+
+#searchInput[b-a3777pej5v] {
+    margin: 20px;
+    width: 400px;
+}
+
+.blue[b-a3777pej5v] {
+    background-color: blue;
+}
+
+.red[b-a3777pej5v] {
+    background-color: red;
+}
+
+.green[b-a3777pej5v] {
+    background-color: green;
+}
+
+.yellow[b-a3777pej5v] {
+    background-color: yellow;
+}
+
+.purple[b-a3777pej5v] {
+    background-color: mediumpurple;
+}
+
+.orange[b-a3777pej5v] {
+    background-color: #D35400;
+}
+
+.darkgray[b-a3777pej5v] {
+    background-color: #2E4053;
+}
+
+.cadre[b-a3777pej5v] {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+    padding: 5px;
+    width: 100%;
+}
+
+.setImg[b-a3777pej5v] {
+    width: 100px;
+}
+
+.symbolLabel[b-a3777pej5v] {
+    padding: 0px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: inherit;
+    margin-left: auto;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.setName[b-a3777pej5v] {
+    margin: inherit;
+    padding-left: 105px;
+    margin-right: 5px;
+    width: 500px;
+    font-weight: bold;
+}
+
+.setNbCard[b-a3777pej5v] {
+    margin: inherit;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 200px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.setReleaseDate[b-a3777pej5v] {
+    margin: inherit;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 200px;
+    text-align: center;
+    font-weight: bold;
+}
+/* _content/BlazorApp/Shared/CardComponent.razor.rz.scp.css */
+:root[b-z97rwcgzic] {
+    --my-color: "lightgray";
+    --border-width: "0px";
+}
+
+.cadre[b-z97rwcgzic] {
+    margin: 10px;
+    padding: 10px;
+    height: 600px;
+    width: 320px;
+    box-shadow: 1px 1px 2px 2px rgb(0, 0, 0, .5);
+    border: var(--border-width) solid black;
+    background-color: var(--my-color);
+}
+
+.cardData[b-z97rwcgzic] {
+    /*text-align: center;*/
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cardTitle[b-z97rwcgzic] {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+}
+
+.cardPrices[b-z97rwcgzic] {
+    width: 50%;
+    height: 135px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 0px;
+    margin: 0px;
+}
+
+.textPrices[b-z97rwcgzic] {
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.cardAction[b-z97rwcgzic] {
+    width: 50%;
+    height: 135px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.actionImg[b-z97rwcgzic] {
+    cursor: pointer;
+}
+
+.cardImg[b-z97rwcgzic] {
+    margin-right: auto;
+    display: block;
+    width: 274px;
+    height: 382px;
+}
+
+.cardArea[b-z97rwcgzic] {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+    .cardArea .cardBadge[b-z97rwcgzic] {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        padding: 10px 15px;
+        border-radius: 50%;
+        background: #7e9ec3;
+        color: white;
+    }
+/* _content/BlazorApp/Shared/ExtensionComponent.razor.rz.scp.css */
+.cadre[b-ql2ujpon10] {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 5px;
+    width: 100%;
+}
+
+.cadre:hover[b-ql2ujpon10] {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.setImg[b-ql2ujpon10] {
+    width: 100px;
+}
+
+.symbol[b-ql2ujpon10] {
+    border: 2px solid black;
+    color: white;
+    padding: 0px;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: inherit;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.setName[b-ql2ujpon10] {
+    margin: inherit;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 400px;
+}
+
+.setNbCard[b-ql2ujpon10] {
+    margin: inherit;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 200px;
+    text-align: center;
+}
+
+.setReleaseDate[b-ql2ujpon10] {
+    margin: inherit;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 200px;
+    text-align: center;
+}
+
+.blue[b-ql2ujpon10] {
+    background-color: blue;
+}
+
+.red[b-ql2ujpon10] {
+    background-color: red;
+}
+
+.green[b-ql2ujpon10] {
+    background-color: green;
+}
+
+.yellow[b-ql2ujpon10] {
+    background-color: yellow;
+}
+
+.purple[b-ql2ujpon10] {
+    background-color: mediumpurple;
+}
+
+.orange[b-ql2ujpon10] {
+    background-color: #D35400;
+}
+
+.darkgray[b-ql2ujpon10] {
+    background-color: #2E4053;
+}
+/* _content/BlazorApp/Shared/MainLayout.razor.rz.scp.css */
+.page[b-3dsd3z3yec] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+main[b-3dsd3z3yec] {
+    flex: 1;
+}
+
+.sidebar[b-3dsd3z3yec] {
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+}
+
+.top-row[b-3dsd3z3yec] {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row[b-3dsd3z3yec]  a, .top-row .btn-link[b-3dsd3z3yec] {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+    }
+
+    .top-row a:first-child[b-3dsd3z3yec] {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+@media (max-width: 640.98px) {
+    .top-row:not(.auth)[b-3dsd3z3yec] {
+        display: none;
+    }
+
+    .top-row.auth[b-3dsd3z3yec] {
+        justify-content: space-between;
+    }
+
+    .top-row a[b-3dsd3z3yec], .top-row .btn-link[b-3dsd3z3yec] {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 641px) {
+    .page[b-3dsd3z3yec] {
+        flex-direction: row;
+    }
+
+    .sidebar[b-3dsd3z3yec] {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row[b-3dsd3z3yec] {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .top-row[b-3dsd3z3yec], article[b-3dsd3z3yec] {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+/* _content/BlazorApp/Shared/NavMenu.razor.rz.scp.css */
+.navbar-toggler[b-7cxxmz0cwl] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-7cxxmz0cwl] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-7cxxmz0cwl] {
+    font-size: 1.1rem;
+}
+
+.oi[b-7cxxmz0cwl] {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item[b-7cxxmz0cwl] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-7cxxmz0cwl] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-7cxxmz0cwl] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-7cxxmz0cwl]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+.nav-item[b-7cxxmz0cwl]  a.active {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+}
+
+.nav-item[b-7cxxmz0cwl]  a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-7cxxmz0cwl] {
+        display: none;
+    }
+
+    .collapse[b-7cxxmz0cwl] {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+}
+/* _content/BlazorApp/Shared/Topbar.razor.rz.scp.css */
+#cadre[b-7h87qoeuij] {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 100%;
+    width:100%;
+}
+
+#save[b-7h87qoeuij] {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    justify-self: flex-start;
+    margin: auto;
+    margin-left: 1px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+#saveText[b-7h87qoeuij] {
+    margin-left: 15px;
+    margin-top: 3px;
+    color: dodgerblue;
+}

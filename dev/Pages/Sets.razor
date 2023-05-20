@@ -1,0 +1,114 @@
+﻿@page "/sets"
+@inherits SetsBase
+@inject IJSRuntime JS
+
+<PageTitle>Extensions</PageTitle>
+
+<h1>@PageTitle</h1>
+
+<div id="filters">
+	@*EXTENSION*@
+	<div class="checkboxGroup">
+		<label class="toggler-wrapper style-1">
+			<input type="checkbox" @bind="@DisplayExtension">
+			<div class="toggler-slider">
+				<div class="toggler-knob"></div>
+			</div>
+		</label>
+		<p class="checkboxLabel">Extensions</p>
+		<p class="symbol blue">E</p>
+	</div>
+
+	@*PROMO*@
+	<div class="checkboxGroup">
+		<label class="toggler-wrapper style-1">
+			<input type="checkbox" @bind="@DisplayPromo">
+			<div class="toggler-slider">
+				<div class="toggler-knob"></div>
+			</div>
+		</label>
+		<p class="checkboxLabel">Promo</p>
+		<p class="symbol red">P</p>
+	</div>
+
+	@*COMMANDER*@
+	<div class="checkboxGroup">
+		<label class="toggler-wrapper style-1">
+			<input type="checkbox" @bind="@DisplayCommander">
+			<div class="toggler-slider">
+				<div class="toggler-knob"></div>
+			</div>
+		</label>
+		<p class="checkboxLabel">Commander</p>
+		<p class="symbol green">C</p>
+	</div>
+
+	@*FUNNY*@
+	<div class="checkboxGroup">
+		<label class="toggler-wrapper style-1">
+			<input type="checkbox" @bind="@DisplayFunny">
+			<div class="toggler-slider">
+				<div class="toggler-knob"></div>
+			</div>
+		</label>
+		<p class="checkboxLabel">Funny</p>
+		<p class="symbol purple">F</p>
+	</div>
+
+	@*TOKEN*@
+	<div class="checkboxGroup">
+		<label class="toggler-wrapper style-1">
+			<input type="checkbox" @bind="@DisplayToken">
+			<div class="toggler-slider">
+				<div class="toggler-knob"></div>
+			</div>
+		</label>
+		<p class="checkboxLabel">Token</p>
+		<p class="symbol darkgray">T</p>
+	</div>
+
+	@*OTHERS*@
+	<div class="checkboxGroup">
+		<label class="toggler-wrapper style-1">
+			<input type="checkbox" @bind="@DisplayOthers">
+			<div class="toggler-slider">
+				<div class="toggler-knob"></div>
+			</div>
+		</label>
+		<p class="checkboxLabel">Autres</p>
+		<p class="symbol orange">A</p>
+	</div>
+	<input id="searchInput" placeholder="Rechercher" @bind="@SearchInput" @bind:event="oninput" />
+</div>
+
+@if (SearchInput != "" && ObservableSets.Count == 0)
+{
+	<p><em>Aucun résultat trouvé</em></p>
+}
+else if (ObservableSets.Count == 0 && (DisplayExtension || DisplayCommander || DisplayFunny || DisplayPromo || DisplayToken || DisplayOthers))
+{
+	<p><em>Chargement des extensions en cours...</em></p>
+}
+else
+{
+	<div class="cadre">
+		<p class="setName">Nom</p>
+		<p class="setNbCard">Nombre de cartes</p>
+		<p class="setReleaseDate">Date de sortie</p>
+		<p class="setNbCard">Nombre de cartes dans votre collection</p>
+		<p class="symbolLabel">Code</p>
+	</div>
+	<div id="setsList">
+		@for (int i = 0; i < ObservableSets.Count; i++)
+		{
+			<ExtensionComponent Set="@ObservableSets[i]" />
+		}
+	</div>
+}
+
+@code {
+	public async void showCheckboxes()
+	{
+		await JS.InvokeAsync<string>("showCheckboxes");
+	}
+}

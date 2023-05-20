@@ -1,0 +1,36 @@
+﻿@using BlazorApp.Data;
+@inherits CardComponentBase
+
+<div class="cadre" style="--my-color: @color; --border-width: @borderWidth">
+	<div class="cardArea">
+		<img class="cardImg" src="@Card.ImgUrl" alt="@Card.Name" width="50" height="50" />
+		@if (NbCardInCollection > 0)
+		{
+			<span class="cardBadge">@NbCardInCollection</span>
+		}
+	</div>
+	<div class="cardData">
+		<div class="cardTitle">
+			<p>@Card.Name</p>
+		</div>
+		<div class="cardPrices">
+			<p class="textPrices">EUR : @Card.Prices?.EUR€<br />EUR FOIL : @Card.Prices?.EURFoil€<br />USD : @Card.Prices?.USD$<br />USD FOIL : @Card.Prices?.USDFoil$</p>
+		</div>
+		<div class="cardAction">
+			@if (@AllowAddToCollection)
+			{
+				<input type="number" name="nbCard" @bind="@NbCardToAdd" min="1" max="10" step="1" />
+				<div class="actionImg" @onclick="@OnClickAdd">
+					<img src="/add-icon.png" alt="add" height="40" width="40" />
+				</div>
+			}
+			@if (@AllowRemoveFromCollection)
+			{
+				<input type="number" name="nbCard" @bind="@NbCardToRemove" min="1" max="@NbCardInCollection" step="1" />
+				<div class="actionImg" @onclick="@OnClickRemove">
+					<img src="/remove-icon.png" alt="add" height="40" width="40" />
+				</div>
+			}
+		</div>
+	</div>
+</div>

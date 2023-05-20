@@ -1,0 +1,34 @@
+﻿@using BlazorApp.Data;
+@inherits ExtensionComponentBase
+@inject NavigationManager _nav
+
+<div class="cadre" @onclick="@(() =>  _nav.NavigateTo(" /cards/"+Set?.Code))">
+	<img class="setImg" src="@Set?.ImgUrl" alt="@Set?.Name" width="22" height="22" />
+	<p class="setName">@Set?.Name (@Set?.Code)</p>
+	<p class="setNbCard">@Set?.CardCount</p>
+	<p class="setReleaseDate">@Set?.ReleaseDate?.ToString("dd/MM/yyyy")</p>
+	<p class="setNbCard">@Set?.CardInCollection</p>
+	@switch (Set?.SetType)
+	{
+		case ESetType.PROMO:
+			<p class="symbol red">P</p>
+			break;
+		case ESetType.EXPANSION:
+			<p class="symbol blue">E</p>
+			break;
+		case ESetType.COMMANDER:
+			<p class="symbol green">C</p>
+			break;
+		case ESetType.FUNNY:
+			<p class="symbol purple">F</p>
+			break;
+		case ESetType.TOKEN:
+			<p class="symbol darkgray">T</p>
+			break;
+		case ESetType.OTHERS:
+			<p class="symbol orange">A</p>
+			break;
+		default:
+			break;
+	}
+</div>
