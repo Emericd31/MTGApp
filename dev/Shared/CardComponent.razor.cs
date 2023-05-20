@@ -58,6 +58,27 @@ namespace BlazorApp.Shared
 			return base.OnInitializedAsync();
 		}
 
+		/// <summary>Method called when parameters are set.</summary>
+		protected override void OnParametersSet()
+		{
+			if (NbCardInCollection == 0 && Card != null && DataService.Instance.MyCollection.Cards.ContainsKey(Card.UID))
+			{
+				NbCardInCollection = DataService.Instance.MyCollection.Cards[Card.UID].nbCard;
+				color = "#d4bb83";
+				borderWidth = "2px";
+			}
+
+			if (NbCardInCollection > 0 && Card != null)
+			{
+				if (!DataService.Instance.MyCollection.Cards.ContainsKey(Card.UID))
+				{
+					borderWidth = "0px";
+					color = "lightgray";
+					NbCardInCollection = 0;
+				}
+			}
+		}
+
 		/// <summary>Method called when add button is clicked.</summary>
 		protected void OnClickAdd()
 		{
