@@ -1,4 +1,5 @@
 ﻿using BlazorApp.Data;
+using BlazorApp.Pages;
 using Newtonsoft.Json;
 
 namespace BlazorApp.API
@@ -105,22 +106,30 @@ namespace BlazorApp.API
 		{
 			return Task.Run(async () =>
 			{
-				var cards = new List<Card>();
-				long totalCards = 0;
-
-				bool hasMore = true;
-				var url = "https://api.scryfall.com/cards/search?q=" + searchInput + "&unique=prints";
-
-				while (hasMore)
+				try
 				{
-					(bool hasMoreResult, string urlResult, List<Card> cards, long totalCards) list = await GetCardsByURL(url, limit).ConfigureAwait(false);
-					hasMore = list.hasMoreResult;
-					url = list.urlResult;
-					cards.AddRange(list.cards);
-					totalCards = list.totalCards;
-				}
 
-				return (cards, totalCards);
+					var cards = new List<Card>();
+					long totalCards = 0;
+
+					bool hasMore = true;
+					var url = "https://api.scryfall.com/cards/search?q=" + searchInput + "&unique=prints";
+
+					while (hasMore)
+					{
+						(bool hasMoreResult, string urlResult, List<Card> cards, long totalCards) list = await GetCardsByURL(url, limit).ConfigureAwait(false);
+						hasMore = list.hasMoreResult;
+						url = list.urlResult;
+						cards.AddRange(list.cards);
+						totalCards = list.totalCards;
+					}
+
+					return (cards, totalCards);
+				}
+				catch
+				{
+					return (new List<Card>(), 0);
+				}
 			}).Result;
 
 		}
