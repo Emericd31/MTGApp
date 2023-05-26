@@ -11,7 +11,7 @@ namespace BlazorApp.Shared
 		/// <param name="firstRender">Boolean indicating if it's the first rendering.</param>
 		protected override async Task OnAfterRenderAsync(bool firstRender)
 		{
-			if (firstRender)
+			if (firstRender && !DataService.Instance.HasBeenInitialized)
 			{
 				await DataService.Instance.InitializeData().ConfigureAwait(false);
 
@@ -27,6 +27,7 @@ namespace BlazorApp.Shared
 					JsonImportExport.SaveCollection(collectionFilePath);
 				else
 					JsonImportExport.ImportCollection(collectionFilePath);
+				DataService.Instance.HasBeenInitialized = true;
 			}
 		}
 	}
