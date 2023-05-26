@@ -27,6 +27,9 @@ namespace BlazorApp.Data
 			}
 		}
 
+		/// <summary>Boolean indicating if application's data has been initialized.</summary>
+		public bool HasBeenInitialized { get; set; }
+
 		/// <summary>Collection of cards.</summary>
 		public Collection MyCollection { get; set; }
 
