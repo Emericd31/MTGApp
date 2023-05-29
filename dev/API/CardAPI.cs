@@ -7,7 +7,7 @@ namespace BlazorApp.API
 	/// <summary>Class that handles the retrieval of data related to card.</summary>
 	public static class CardAPI
 	{
-		#region Private Methods 
+		#region Private Methods
 
 		/// <summary>Gets cards by URL.</summary>
 		/// <param name="url"></param>
@@ -95,13 +95,48 @@ namespace BlazorApp.API
 
 				return (totalCards, cards);
 			}).Result;
+		}
 
+		/// <summary>Searches card given it's code and it's set code.</summary>
+		/// <param name="cardNumber">Card code.</param>
+		/// <param name="setCode">Set code.</param>
+		/// <returns>A tuple representing the list of cards and the total number of cards found.</returns>
+		public static async Task<(List<Card> cards, long totalCards)> SearchCards(string cardNumber, string setCode)
+		{
+			return Task.Run(async () =>
+			{
+				try
+				{
+					var cards = new List<Card>();
+					long totalCards = 0;
+
+					bool hasMore = true;
+					var url = $"https://api.scryfall.com/cards/search?q=number%3A{cardNumber}+set%3A{setCode}";
+
+					while (hasMore)
+					{
+						(bool hasMoreResult, string urlResult, List<Card> cards, long totalCards) list = await GetCardsByURL(url).ConfigureAwait(false);
+						hasMore = list.hasMoreResult;
+						url = list.urlResult;
+						totalCards = list.totalCards;
+						cards.AddRange(list.cards);
+
+					}
+					
+					return (cards, totalCards);
+				}
+				catch
+				{
+					return (new List<Card>(), 0);
+				}
+
+			}).Result;
 		}
 
 		/// <summary>Searches cards containing a specific string in it's name.</summary>
 		/// <param name="searchInput">String value.</param>
 		/// <param name="limit">Maximum number of cards before cancelling the search action.</param>
-		/// <returns></returns>
+		/// <returns>A tuple representing the list of cards and the total number of cards found.</returns>
 		public static async Task<(List<Card> cards, long totalCards)> SearchCards(string searchInput, int limit = -1)
 		{
 			return Task.Run(async () =>

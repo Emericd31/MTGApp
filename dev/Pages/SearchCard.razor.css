@@ -11,12 +11,70 @@
     margin-bottom: 10px;
 }
 
-#searchInput {
-    width: 400px;
-    margin-right: 20px;
-}
-
 #cardsList {
     display: flex;
     flex-wrap: wrap;
+}
+
+#grid-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 20px;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    row-gap: 20px;
+    grid-template-areas:
+        "searchByName searchByName searchByName searchByName searchByName searchByName"
+        "nameInput nameInput nameInput nameButton nameButton nameButton"
+        "searchByCardAndSetCode searchByCardAndSetCode searchByCardAndSetCode searchByCardAndSetCode searchByCardAndSetCode searchByCardAndSetCode"
+        "cardCode cardCode setCode setCode codeButton codeButton";
+}
+
+#searchByNameText {
+    grid-area: searchByName;
+    text-align: center;
+}
+
+#searchInput {
+    grid-area: nameInput;
+    align-self: center;
+    justify-self: end;
+    height: 30px;
+    width: 300px;
+}
+
+#searchButton {
+    grid-area: nameButton;
+    height: 30px;
+    width: 300px;
+    align-self: center;
+}
+
+#searchByCardAndSetCode {
+    grid-area: searchByCardAndSetCode;
+    text-align: center;
+}
+
+#searchCardCode {
+    grid-area: cardCode;
+    align-self: center;
+    height: 30px;
+    width: 300px;
+    justify-self: center;
+}
+
+#searchSetCode {
+    grid-area: setCode;
+    align-self: center;
+    height: 30px;
+    width: 300px;
+    justify-self: center;
+}
+
+#searchButton2 {
+    grid-area: codeButton;
+    height: 30px;
+    width: 250px;
+    align-self: center;
+    justify-self: center;
 }

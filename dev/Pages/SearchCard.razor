@@ -4,8 +4,16 @@
 <h1>Rechercher une carte</h1>
 
 <div id="filters">
-	<input id="searchInput" placeholder="Rechercher" @bind-value="@SearchInput" />
-	<input type="button" value="Rechercher" @onclick="@Search" />
+	<div id="grid-container">
+		<h2 id="searchByNameText">Rechercher par nom (en anglais) : </h2>
+		<input id="searchInput" placeholder="Nom de la carte (en anglais)" @bind-value="@SearchInput" />
+		<input id="searchButton" type="button" value="Rechercher" @onclick="@Search" />
+
+		<h2 id="searchByCardAndSetCode">Rechercher par le code de la carte et le code de l'extension : </h2>
+		<input id="searchCardCode" placeholder="Code de la carte" @bind-value="@SearchCardCode" />
+		<input id="searchSetCode" placeholder="Code de l'extension" @bind-value="@SearchSetCode" />
+		<input id="searchButton2" type="button" value="Rechercher" @onclick="@SearchByCardCodeAndSetCode" />
+	</div>
 </div>
 
 @if (Cards == null || SearchInput == "")
