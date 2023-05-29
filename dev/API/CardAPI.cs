@@ -133,6 +133,50 @@ namespace BlazorApp.API
 			}).Result;
 		}
 
+		/// <summary>Gets a card given it's set code and MTG code.</summary>
+		/// <param name="setCode">Three letters expansion code.</param>
+		/// <param name="mtgCode">Magic The Gathering code.</param>
+		/// <returns>A card.</returns>
+		public static async Task<Card?> GetCard(string setCode, string mtgCode)
+		{
+			return Task.Run(async () =>
+			{
+				try
+				{
+					Card? result = null;
+					using var client = new HttpClient();
+
+					var uri = new Uri("https://api.scryfall.com/cards/" + setCode.ToLower() + "/" + mtgCode);
+					var requestResult = client.GetStringAsync(uri).Result;
+
+					JsonTextReader reader = new JsonTextReader(new StringReader(requestResult));
+					dynamic? card = JsonConvert.DeserializeObject(requestResult);
+
+					if (card != null)
+					{
+						var imgUrl = card.image_uris?.normal.Value;
+						if (imgUrl == null)
+						{
+							imgUrl = card.card_faces[0]?.image_uris?.normal.Value;
+						}
+						var cardName = card.name.Value;
+
+						var cardId = card.id.Value;
+
+						Price cardPrice = new Price(card.prices.usd.Value, card.prices.usd_foil.Value, card.prices.eur.Value, card.prices.eur_foil.Value);
+						var setCode = card.set.Value;
+
+						result = new Card(cardId, cardName, imgUrl, cardPrice, setCode);
+					}
+					return result;
+				}
+				catch
+				{
+					return null;
+				}
+			}).Result;
+		}
+
 		/// <summary>Searches cards containing a specific string in it's name.</summary>
 		/// <param name="searchInput">String value.</param>
 		/// <param name="limit">Maximum number of cards before cancelling the search action.</param>

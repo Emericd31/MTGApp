@@ -1,0 +1,32 @@
+﻿@page "/decks"
+@inherits DecksBase
+
+<h1>Mes decks</h1>
+
+<button class="btn-grad" @onclick="DisplayPopup">
+	<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 8 8"><path fill="white" d="M3 0v3H0v2h3v3h2V5h3V3H5V0H3z" /></svg>
+</button>
+
+<Popup ShowPopup="@ShowPopup" ClosePopup="ClosePopup" Title="Importer un deck">
+	<Content>
+		<p>Saisissez le nom de votre deck : </p>
+		<input id="deck-title-input" @bind-value="@DeckTitle" @bind-value:event="oninput" />
+		<p>Collez le contenu du deck exporté depuis MTGArena<br />(l'import doit être effectué avec le jeu en anglais) : </p>
+		<textarea id="add-deck-textarea" @bind-value="@DeckValue" @bind-value:event="oninput" class="form-control" rows="3"></textarea>
+		<div id="button-area">
+			<Loader IsLoading="@IsLoading" LoadingText="@LoadingMessage">
+				<button disabled="@IsDisabled" @onclick="ImportDeck">Importer</button>
+			</Loader>
+		</div>
+		<div id="error-msg-area">
+			@if (IsSuccess)
+			{
+				<p id="success-msg">@Message</p>
+			}
+			else
+			{
+				<p id="error-msg">@Message</p>
+			}
+		</div>
+	</Content>
+</Popup>

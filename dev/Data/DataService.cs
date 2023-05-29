@@ -33,11 +33,14 @@ namespace BlazorApp.Data
 		/// <summary>Collection of cards.</summary>
 		public Collection MyCollection { get; set; }
 
+		/// <summary>List of decks.</summary>
+		public List<Collection> MyDecks { get; set; }
+
 		/// <summary>List of existing Magic expansions.</summary>
 		public List<Set> Sets { get; set; } = new List<Set>();
 
 		/// <summary>Folder containing external application's data.</summary>
-		public string ApplicationDataFolder { get; set; }
+		public string? ApplicationDataFolder { get; set; }
 
 		#endregion
 
@@ -47,6 +50,7 @@ namespace BlazorApp.Data
 		private DataService()
 		{
 			MyCollection = new Collection("MyCollection", "Description");
+			MyDecks = new List<Collection>();
 		}
 
 		#endregion
