@@ -76,6 +76,12 @@ namespace BlazorApp.Shared
 					color = "lightgray";
 					NbCardInCollection = 0;
 				}
+				else
+				{
+					NbCardInCollection = DataService.Instance.MyCollection.Cards[Card.UID].nbCard;
+					color = "#d4bb83";
+					borderWidth = "2px";
+				}
 			}
 		}
 
