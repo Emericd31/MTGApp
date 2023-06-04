@@ -17,4 +17,14 @@
 		ADD,
 		REMOVE
 	}
+
+	/// <summary>Possible values of card color.</summary>
+	public enum ECardColor
+	{
+		GREEN,
+		BLUE,
+		RED,
+		WHITE,
+		BLACK
+	}
 }

@@ -1,0 +1,52 @@
+﻿@using static BlazorApp.Helpers.CssClassInlineBuilder;
+@inherits DeckComponentBase
+
+
+<div class="deck">
+	<div class="deckTitleArea @CssClass(new {OneColor, TwoColor, ThreeColor, FourColor, FiveColor})" style="--first-color: @FirstColor; --second-color: @SecondColor; --third-color: @ThirdColor; --fourth-color: @FourthColor; --fifth-color: @FifthColor;">
+		<h3 class="deckTitle">@Deck?.Name</h3>
+	</div>
+
+	<div class="deckContentArea">
+		<div class="deckColors">
+			@if (Deck != null && Deck.Colors.Contains(Data.ECardColor.GREEN))
+			{
+				<img src="/forest.png" alt="add" height="30" width="30" />
+			}
+			@if (Deck != null && Deck.Colors.Contains(Data.ECardColor.BLUE))
+			{
+				<img src="/island.png" alt="add" height="30" width="30" />
+			}
+			@if (Deck != null && Deck.Colors.Contains(Data.ECardColor.RED))
+			{
+				<img src="/mountain.png" alt="add" height="30" width="30" />
+			}
+			@if (Deck != null && Deck.Colors.Contains(Data.ECardColor.WHITE))
+			{
+				<img src="/plain.png" alt="add" height="30" width="30" />
+			}
+			@if (Deck != null && Deck.Colors.Contains(Data.ECardColor.BLACK))
+			{
+				<img src="/swamp.png" alt="add" height="30" width="30" />
+			}
+		</div>
+		<div class="iconTextArea">
+			<div class="icon">
+				<img src="/card_icon.png" alt="add" height="58" width="42" />
+			</div>
+			<p class="iconTextAreaText">@Deck?.NbCards</p>
+		</div>
+		<div class="iconTextArea">
+			<div class="icon">
+				<img src="/euro_symbol.png" alt="add" height="45" width="45" />
+			</div>
+			<p class="iconTextAreaText">@EURPrice€<br />@Deck?.EURCardNotValued sans prix</p>
+		</div>
+		<div class="iconTextArea">
+			<div class="icon">
+				<img src="/dollar_symbol.png" alt="add" height="45" width="45" />
+			</div>
+			<p class="iconTextAreaText">@USDPrice$<br />@Deck?.USDCardNotValued sans prix</p>
+		</div>
+	</div>
+</div>

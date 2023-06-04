@@ -1,5 +1,6 @@
 ﻿using BlazorApp.API;
 using BlazorApp.Data;
+using BlazorApp.Helpers;
 using Microsoft.AspNetCore.Components;
 
 namespace BlazorApp.Pages
@@ -36,6 +37,9 @@ namespace BlazorApp.Pages
 
 		/// <summary>Boolean indicating if the "import" button is disabled.</summary>
 		protected bool IsDisabled { get; set; }
+
+		/// <summary>List of decks.</summary>
+		protected List<Collection> MyDecks => DataService.Instance.MyDecks;
 
 		/// <summary>Gets or sets <see cref="_deckTitle"/>.</summary>
 		protected string? DeckTitle
@@ -95,6 +99,7 @@ namespace BlazorApp.Pages
 		protected void DisplayPopup()
 		{
 			ShowPopup = !ShowPopup;
+			Message = "";
 		}
 
 		/// <summary>Closes the import popup.</summary>
@@ -119,6 +124,8 @@ namespace BlazorApp.Pages
 		{
 			SetResultMeessage(isSuccess: true, "");
 			IsLoading = true;
+			var totalNumberOfCards = 0;
+			var NbErrorCardImport = 0;
 			await Task.Run(async () =>
 			{
 				if (DataService.Instance.MyDecks.Any(deck => deck.Name == _deckTitle))
@@ -132,9 +139,6 @@ namespace BlazorApp.Pages
 					SetResultMeessage(isSuccess: false, "L'une des données nécessaire est nulle !");
 					return;
 				}
-
-				var totalNumberOfCards = 0;
-				var NbErrorCardImport = 0;
 
 				Collection newDeck = new Collection(_deckTitle, "No description");
 
@@ -155,6 +159,17 @@ namespace BlazorApp.Pages
 							{
 								totalNumberOfCards += nbCard;
 								newDeck.ManageCard(card, nbCard, ECollectionAction.ADD);
+
+								if (card.Colors.Contains(ECardColor.GREEN) && !newDeck.Colors.Contains(ECardColor.GREEN))
+									newDeck.Colors.Add(ECardColor.GREEN);
+								if (card.Colors.Contains(ECardColor.BLUE) && !newDeck.Colors.Contains(ECardColor.BLUE))
+									newDeck.Colors.Add(ECardColor.BLUE);
+								if (card.Colors.Contains(ECardColor.RED) && !newDeck.Colors.Contains(ECardColor.RED))
+									newDeck.Colors.Add(ECardColor.RED);
+								if (card.Colors.Contains(ECardColor.WHITE) && !newDeck.Colors.Contains(ECardColor.WHITE))
+									newDeck.Colors.Add(ECardColor.WHITE);
+								if (card.Colors.Contains(ECardColor.BLACK) && !newDeck.Colors.Contains(ECardColor.BLACK))
+									newDeck.Colors.Add(ECardColor.BLACK);
 							}
 							else
 							{
@@ -170,12 +185,17 @@ namespace BlazorApp.Pages
 				}
 
 				if (newDeck.NbCards > 0)
+				{
+					var deckId = Generators.GenerateString(10);
+					while (DataService.Instance.MyDecks.Any(deck => deck.Id == deckId))
+						deckId = Generators.GenerateString(10);
+					newDeck.Id = deckId;
 					DataService.Instance.MyDecks.Add(newDeck);
-
-				SetResultMeessage(isSuccess: true, $"Le deck a été importé avec succès ! ({totalNumberOfCards}/{totalNumberOfCards + NbErrorCardImport} cartes)");
+				}
 				DeckTitle = "";
 				DeckValue = "";
 			});
+			SetResultMeessage(isSuccess: true, $"Le deck a été importé avec succès ! ({totalNumberOfCards}/{totalNumberOfCards + NbErrorCardImport} cartes)");
 			IsLoading = false;
 		}
 

@@ -15,6 +15,17 @@
     }
 }
 
+.popupOut {
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100%;
+    z-index: 998;
+    position: fixed;
+    background-color: lightgray;
+    opacity: 0.5;
+}
+
 .popup {
     --popup-border-size: 0px;
     --popup-box-shadow-color: 0, 36, 96;

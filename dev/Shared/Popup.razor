@@ -2,6 +2,7 @@
 
 @if (ShowPopup)
 {
+	<div class="popupOut" @onclick="ClosePopup"></div>
 	<div class="popup">
 		<div class="popup-title"><h2>@Title</h2></div>
 		<div class="popup-close-icon" @onclick="ClosePopup">

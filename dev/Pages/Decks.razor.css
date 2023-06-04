@@ -57,4 +57,9 @@
         color: #fff;
         text-decoration: none;
     }
+
+#myDecks {
+    display: flex;
+    flex-wrap: wrap;
+}
          

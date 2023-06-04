@@ -3,6 +3,9 @@
 	/// <summary>Collection object.</summary>
 	public class Collection
 	{
+		/// <summary>Unique identifier.</summary>
+		public string? Id { get; set; }
+
 		/// <summary>Name.</summary>
 		public string Name { get; set; } = "";
 
@@ -24,6 +27,9 @@
 		/// <summary>Number of cards without their dollars US prices.</summary>
 		public int USDCardNotValued { get; set; }
 
+		/// <summary>Collection card colors.</summary>
+		public List<ECardColor> Colors { get; set; }
+
 		/// <summary>
 		/// Dictionary containing all cards in collection.
 		/// Key : unique identifier of the card.
@@ -40,6 +46,7 @@
 			Description = description;
 			NbCards = 0;
 			Cards = new ObservableDictionary<string, (Card, int)>();
+			Colors = new List<ECardColor>();
 		}
 
 		/// <summary>Manages card in collection.</summary>

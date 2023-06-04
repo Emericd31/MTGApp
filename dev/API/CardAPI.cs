@@ -161,12 +161,33 @@ namespace BlazorApp.API
 						}
 						var cardName = card.name.Value;
 
+						var cardColors = new List<ECardColor>();
+						try
+						{
+							var jsonCardColors = card.mana_cost.Value;
+
+							if (jsonCardColors.Contains("G"))
+								cardColors.Add(ECardColor.GREEN);
+							if (jsonCardColors.Contains("U"))
+								cardColors.Add(ECardColor.BLUE);
+							if (jsonCardColors.Contains("R"))
+								cardColors.Add(ECardColor.RED);
+							if (jsonCardColors.Contains("W"))
+								cardColors.Add(ECardColor.WHITE);
+							if (jsonCardColors.Contains("B"))
+								cardColors.Add(ECardColor.BLACK);
+						}
+						catch
+						{
+							// Do Nothing
+						}
+
 						var cardId = card.id.Value;
 
 						Price cardPrice = new Price(card.prices.usd.Value, card.prices.usd_foil.Value, card.prices.eur.Value, card.prices.eur_foil.Value);
 						var setCode = card.set.Value;
 
-						result = new Card(cardId, cardName, imgUrl, cardPrice, setCode);
+						result = new Card(cardId, cardName, imgUrl, cardPrice, setCode, cardColors);
 					}
 					return result;
 				}

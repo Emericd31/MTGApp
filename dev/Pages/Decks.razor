@@ -1,11 +1,21 @@
 ﻿@page "/decks"
 @inherits DecksBase
 
-<h1>Mes decks</h1>
+<h1>Mes decks : @MyDecks.Count</h1>
 
 <button class="btn-grad" @onclick="DisplayPopup">
 	<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 8 8"><path fill="white" d="M3 0v3H0v2h3v3h2V5h3V3H5V0H3z" /></svg>
 </button>
+
+@if (MyDecks.Count > 0)
+{
+	<div id="myDecks">
+		@foreach (var deck in MyDecks)
+		{
+			<DeckComponent Deck="deck" />
+		}
+	</div>
+}
 
 <Popup ShowPopup="@ShowPopup" ClosePopup="ClosePopup" Title="Importer un deck">
 	<Content>
