@@ -37,16 +37,22 @@
 		/// </summary>
 		public ObservableDictionary<string, (Card card, int nbCard)> Cards { get; set; }
 
+		/// <summary>Collection artwork.</summary>
+		public Artwork? Artwork { get; set; }
+
 		/// <summary>Constructor.</summary>
 		/// <param name="name">Name.</param>
 		/// <param name="description">Description.</param>
-		public Collection(string name, string description)
+		/// <param name="artwork">Collection artwork.</param>
+		public Collection(string name, string description, Artwork? artwork = null)
 		{
 			Name = name;
 			Description = description;
 			NbCards = 0;
 			Cards = new ObservableDictionary<string, (Card, int)>();
 			Colors = new List<ECardColor>();
+			if (artwork != null)
+				Artwork = artwork;
 		}
 
 		/// <summary>Manages card in collection.</summary>

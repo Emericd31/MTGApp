@@ -25,6 +25,12 @@ namespace BlazorApp.Shared
 		/// <summary>Boolean indicating if the deck contains exactly one color.</summary>
 		protected bool OneColor { get; set; }
 
+		/// <summary>Margin top (in %).</summary>
+		protected int MarginTop { get; set; }
+
+		/// <summary>Artwork URL.</summary>
+		protected string? ArtworkURL { get; set; }
+
 		/// <summary>Boolean indicating if the deck contains exactly two colors.</summary>
 		protected bool TwoColor { get; set; }
 
@@ -68,6 +74,11 @@ namespace BlazorApp.Shared
 				ThreeColor = Deck.Colors.Count == 3;
 				FourColor = Deck.Colors.Count == 4;
 				FiveColor = Deck.Colors.Count == 5;
+				if (Deck.Artwork != null)
+				{
+					MarginTop = Deck.Artwork.DisplayDeckMargin;
+					ArtworkURL = Deck.Artwork.Name;
+				}
 
 				var remainingColors = new List<ECardColor>(Deck.Colors);
 

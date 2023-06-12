@@ -4,6 +4,29 @@
     --third-color: "red";
     --fourth-color: "white";
     --fifth-color: "black";
+    --artworkTopMargin: 0;
+}
+
+@keyframes open-animate {
+    0% {
+        transform: scale(1);
+        box-shadow: 0px 0px 0px 0px #656565;
+    }
+
+    100% {
+        transform: scale(1.05);
+        box-shadow: 4px 10px 5px 3px #656565;
+    }
+}
+
+@keyframes opacity-fade {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
 }
 
 .deck {
@@ -12,10 +35,30 @@
     display: flex;
     flex-wrap: wrap;
     margin: 10px;
+    border-radius: 10px;
+    /*background: url("/red-art-1.png");*/
+    background-size: 100%;
 }
 
+    /*.deck::before {
+        content: "";
+        background: url("/red-art-1.png");
+        background-size: 100%;
+        opacity: 0.5;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;
+    }*/
+
+    .deck:hover {
+        animation: open-animate 1s both;
+    }
+
 .deckContentArea:hover {
-    background-color: lightgray;
+    /*background-color: lightgray;*/
     cursor: pointer;
 }
 
@@ -77,6 +120,9 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+
+    position: relative;
+    overflow: hidden;
 }
 
 .deckColors {
@@ -115,4 +161,24 @@
 .deckText {
     width: 100%;
     padding-left: 10px;
+}
+
+
+.elevated {
+    position: relative;
+    z-index: 11;
+}
+
+#background-img {
+    margin-top: calc(var(--artworkTopMargin) * 1%);
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    z-index: 999;
+}
+
+#background-img:hover {
+    animation: opacity-fade 1s both;
 }

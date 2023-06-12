@@ -19,13 +19,13 @@
 
 <Popup ShowPopup="@ShowPopup" ClosePopup="ClosePopup" Title="Importer un deck">
 	<Content>
-		<p>Saisissez le nom de votre deck : </p>
+		<p class="yellowText">Saisissez le nom de votre deck : </p>
 		<input id="deck-title-input" @bind-value="@DeckTitle" @bind-value:event="oninput" />
-		<p>Collez le contenu du deck exporté depuis MTGArena<br />(l'import doit être effectué avec le jeu en anglais) : </p>
+		<p class="yellowText">Collez le contenu du deck exporté depuis MTGArena<br />(l'import doit être effectué avec le jeu en anglais) : </p>
 		<textarea id="add-deck-textarea" @bind-value="@DeckValue" @bind-value:event="oninput" class="form-control" rows="3"></textarea>
 		<div id="button-area">
 			<Loader IsLoading="@IsLoading" LoadingText="@LoadingMessage">
-				<button disabled="@IsDisabled" @onclick="ImportDeck">Importer</button>
+				<button id="button" disabled="@IsDisabled" @onclick="ImportDeck">Importer</button>
 			</Loader>
 		</div>
 		<div id="error-msg-area">

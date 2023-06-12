@@ -25,6 +25,20 @@
 		BLUE,
 		RED,
 		WHITE,
-		BLACK
+		BLACK,
+		ARTIFACT,
+		BICOLOR
+	}
+
+	/// <summary>Possible values of card rarity.</summary>
+	public enum ECardRarity
+	{
+		UNKNWOWN,
+		COMMON,
+		UNCOMMON,
+		RARE,
+		SPECIAL,
+		MYTHIC,
+		BONUS
 	}
 }

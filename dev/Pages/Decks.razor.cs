@@ -186,9 +186,48 @@ namespace BlazorApp.Pages
 
 				if (newDeck.NbCards > 0)
 				{
+					// Generate the deck identifier
 					var deckId = Generators.GenerateString(10);
 					while (DataService.Instance.MyDecks.Any(deck => deck.Id == deckId))
 						deckId = Generators.GenerateString(10);
+
+					// Get the image for the deck
+					Random rnd = new Random();
+					int artworkIndex = 1;
+					Artwork deckArt = null;
+					if (newDeck.Colors.Contains(ECardColor.GREEN))
+					{
+						artworkIndex = rnd.Next(1, 9);
+						if (DataService.Instance.Artworks.TryGetValue(ECardColor.GREEN, out List<Artwork> artworkList))
+							deckArt = artworkList[artworkIndex - 1];
+					}
+					else if (newDeck.Colors.Contains(ECardColor.BLUE))
+					{
+						artworkIndex = rnd.Next(1, 5);
+						if (DataService.Instance.Artworks.TryGetValue(ECardColor.BLUE, out List<Artwork> artworkList))
+							deckArt = artworkList[artworkIndex - 1];
+					}
+					else if (newDeck.Colors.Contains(ECardColor.RED))
+					{
+						artworkIndex = rnd.Next(1, 7);
+						if (DataService.Instance.Artworks.TryGetValue(ECardColor.RED, out List<Artwork> artworkList))
+							deckArt = artworkList[artworkIndex - 1];
+					}
+					else if (newDeck.Colors.Contains(ECardColor.WHITE))
+					{
+						artworkIndex = rnd.Next(1, 11);
+						if (DataService.Instance.Artworks.TryGetValue(ECardColor.WHITE, out List<Artwork> artworkList))
+							deckArt = artworkList[artworkIndex - 1];
+					}
+					else if (newDeck.Colors.Contains(ECardColor.BLACK))
+					{
+						artworkIndex = rnd.Next(1, 6);
+						if (DataService.Instance.Artworks.TryGetValue(ECardColor.BLACK, out List<Artwork> artworkList))
+							deckArt = artworkList[artworkIndex - 1];
+					}
+					// Blue red white black
+
+					newDeck.Artwork = deckArt;
 					newDeck.Id = deckId;
 					DataService.Instance.MyDecks.Add(newDeck);
 				}

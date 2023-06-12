@@ -1,6 +1,9 @@
 ﻿#add-deck-textarea {
     width: 90%;
     height: 250px;
+    background-color: #d5ab5b;
+    color: #1E4174;
+    border-radius: 10px;
 }
 
 #button-area {
@@ -32,6 +35,10 @@
 
 #deck-title-input {
     width: 90%;
+    background-color: #d5ab5b;
+    color: #1E4174;
+    border-radius: 10px;
+    text-align: center;
 }
 
 .btn-grad {
@@ -52,14 +59,43 @@
     bottom: 10px;
 }
 
-    .btn-grad:hover {
-        background-position: right center; /* change the direction of the change here */
-        color: #fff;
-        text-decoration: none;
-    }
+.btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
 
 #myDecks {
     display: flex;
     flex-wrap: wrap;
+}
+
+.yellowText {
+    color: #DDA94B;
+}
+
+#button {
+    background-image: linear-gradient(to right, #ffb347 0%, #ffcc33 51%, #ffb347 100%);
+    margin: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #1E4174;
+    box-shadow: 0 0 2px #eee;
+    border-radius: 10px;
+    display: block;
+    margin-top: 20px;
+}
+
+#button:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+#button:disabled {
+    opacity: 0.5;
 }
          

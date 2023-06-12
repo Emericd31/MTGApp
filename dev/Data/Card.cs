@@ -21,13 +21,18 @@
 		/// <summary>Card colors.</summary>
 		public List<ECardColor> Colors { get; set; }
 
+		/// <summary>Card rarity.</summary>
+		public ECardRarity Rarity { get; set; }
+
 		/// <summary>Constructor.</summary>
 		/// <param name="uid">Unique identifier.</param>
 		/// <param name="name">Name.</param>
 		/// <param name="imgUrl">URL of the image card.</param>
 		/// <param name="prices">Prices.</param>
 		/// <param name="setCode">Expansion code.</param>
-		public Card(string uid, string name, string imgUrl, Price prices, string setCode, List<ECardColor>? colors = null)
+		/// <param name="colors">Card colors.</param>
+		/// <param name="rarity">Card rarity.</param>
+		public Card(string uid, string name, string imgUrl, Price prices, string setCode, List<ECardColor>? colors = null, ECardRarity rarity = ECardRarity.UNKNWOWN)
 		{
 			UID = uid;
 			Name = name;
@@ -35,6 +40,7 @@
 			Prices = prices;
 			SetCode = setCode;
 			Colors = colors == null ? new List<ECardColor>() : colors;
+			Rarity = rarity;
 		}
 	}
 }

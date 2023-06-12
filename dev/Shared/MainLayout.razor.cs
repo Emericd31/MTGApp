@@ -13,20 +13,66 @@ namespace BlazorApp.Shared
 		{
 			if (firstRender && !DataService.Instance.HasBeenInitialized)
 			{
-				await DataService.Instance.InitializeData().ConfigureAwait(false);
+				try
+				{
+					await DataService.Instance.InitializeData().ConfigureAwait(false);
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine($"An error occurred while initalizing data : {ex.Message} {ex.InnerException} {ex.StackTrace}");
+				}
 
-				var currentFolder = Directory.GetCurrentDirectory();
-				DataService.Instance.ApplicationDataFolder = Path.Combine(currentFolder, "UserData");
+				try
+				{
+					var currentFolder = Directory.GetCurrentDirectory();
+					DataService.Instance.ApplicationDataFolder = Path.Combine(currentFolder, "UserData");
 
-				if (!Directory.Exists(DataService.Instance.ApplicationDataFolder))
-					Directory.CreateDirectory(DataService.Instance.ApplicationDataFolder);
+					if (!Directory.Exists(DataService.Instance.ApplicationDataFolder))
+						Directory.CreateDirectory(DataService.Instance.ApplicationDataFolder);
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine($"An error occurred while initalizing data folder : {ex.Message} {ex.InnerException} {ex.StackTrace}");
+				}
 
-				var collectionFilePath = Path.Combine(DataService.Instance.ApplicationDataFolder, "MyCollection.json");
+				// Import collection 
+				try
+				{
+					if (DataService.Instance.ApplicationDataFolder != null)
+					{
+						var collectionFilePath = Path.Combine(DataService.Instance.ApplicationDataFolder, "MyCollection.json");
 
-				if (!File.Exists(collectionFilePath))
-					JsonImportExport.SaveCollection(collectionFilePath);
-				else
-					JsonImportExport.ImportCollection(collectionFilePath);
+						if (!File.Exists(collectionFilePath))
+							JsonImportExport.SaveCollection(collectionFilePath);
+						else
+							JsonImportExport.ImportCollection(collectionFilePath);
+					}
+					else
+						Console.WriteLine($"Unable to import collection, application data folder is null");
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine($"An error occurred while importing collection : {ex.Message} {ex.InnerException} {ex.StackTrace}");
+				}
+
+				// Import decks
+				try
+				{
+					if (DataService.Instance.ApplicationDataFolder != null)
+					{
+						var deckFolderPath = Path.Combine(DataService.Instance.ApplicationDataFolder, "Decks");
+						if (!Directory.Exists(deckFolderPath))
+							Directory.CreateDirectory(deckFolderPath);
+						JsonImportExport.ImportAllDecks(deckFolderPath);
+					}
+					else
+						Console.WriteLine($"Unable to import decks, application data folder is null");
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine($"An error occurred while importing decks : {ex.Message} {ex.InnerException} {ex.StackTrace}");
+				}
+
 				DataService.Instance.HasBeenInitialized = true;
 			}
 		}

@@ -1,6 +1,9 @@
-﻿using BlazorApp.Data;
+﻿using System;
+using System.Reflection;
+using BlazorApp.Data;
 using BlazorApp.Pages;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace BlazorApp.API
 {
@@ -122,7 +125,7 @@ namespace BlazorApp.API
 						cards.AddRange(list.cards);
 
 					}
-					
+
 					return (cards, totalCards);
 				}
 				catch
@@ -154,6 +157,7 @@ namespace BlazorApp.API
 
 					if (card != null)
 					{
+						// Gets card img URL
 						var imgUrl = card.image_uris?.normal.Value;
 						if (imgUrl == null)
 						{
@@ -161,6 +165,13 @@ namespace BlazorApp.API
 						}
 						var cardName = card.name.Value;
 
+						// Gets card rarity
+						string jsonCardRarity = card.rarity.Value;
+						var cardRarity = ECardRarity.UNKNWOWN;
+						if (Enum.TryParse<ECardRarity>(jsonCardRarity.ToUpper(), out ECardRarity currentCardRarity))
+							cardRarity = currentCardRarity;
+
+						// Gets card colors
 						var cardColors = new List<ECardColor>();
 						try
 						{
@@ -182,12 +193,38 @@ namespace BlazorApp.API
 							// Do Nothing
 						}
 
+						if (cardColors.Count == 0)
+						{
+							try
+							{
+								var jsonCardColors = card.color_identity;
+								string[] arrayColors = jsonCardColors.ToObject<string[]>();
+								List<string> listColors = arrayColors.ToList();
+
+								if (listColors.Contains("G"))
+									cardColors.Add(ECardColor.GREEN);
+								if (listColors.Contains("U"))
+									cardColors.Add(ECardColor.BLUE);
+								if (listColors.Contains("R"))
+									cardColors.Add(ECardColor.RED);
+								if (listColors.Contains("W"))
+									cardColors.Add(ECardColor.WHITE);
+								if (listColors.Contains("B"))
+									cardColors.Add(ECardColor.BLACK);
+							}
+							catch (Exception ex)
+							{
+								// Do Nothing
+							}
+						}
+
+						// Gets card id
 						var cardId = card.id.Value;
 
 						Price cardPrice = new Price(card.prices.usd.Value, card.prices.usd_foil.Value, card.prices.eur.Value, card.prices.eur_foil.Value);
 						var setCode = card.set.Value;
 
-						result = new Card(cardId, cardName, imgUrl, cardPrice, setCode, cardColors);
+						result = new Card(cardId, cardName, imgUrl, cardPrice, setCode, colors: cardColors, rarity: cardRarity);
 					}
 					return result;
 				}

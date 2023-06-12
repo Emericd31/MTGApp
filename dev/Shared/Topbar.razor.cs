@@ -88,10 +88,17 @@ namespace BlazorApp.Shared
 		/// <summary>Method called on save button click.</summary>
 		protected void Save()
 		{
-			var collectionFilePath = Path.Combine(DataService.Instance.ApplicationDataFolder, "MyCollection.json");
-			JsonImportExport.SaveCollection(collectionFilePath);
-			DisplaySaveText = true;
-			_displayTimer.Start();
+			if (DataService.Instance.ApplicationDataFolder != null)
+			{
+				var collectionFilePath = Path.Combine(DataService.Instance.ApplicationDataFolder, "MyCollection.json");
+				JsonImportExport.SaveCollection(collectionFilePath);
+
+				var deckFolderPath = Path.Combine(DataService.Instance.ApplicationDataFolder, "Decks");
+				JsonImportExport.SaveDecks(deckFolderPath);
+
+				DisplaySaveText = true;
+				_displayTimer.Start();
+			}
 		}
 
 		#endregion
