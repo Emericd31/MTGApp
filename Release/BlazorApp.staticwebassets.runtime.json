@@ -1,7 +1,7 @@
 {
     "ContentRoots": [
-        "C:\\Users\\delac\\Desktop\\test\\wwwroot\\",
-        "C:\\Users\\delac\\Desktop\\test\\"
+        "C:\\Users\\delac\\Documents\\Code\\Blazor\\MTGApp\\Release\\wwwroot\\",
+        "C:\\Users\\delac\\Documents\\Code\\Blazor\\MTGApp\\Release\\"
     ],
     "Root": {
         "Children": {
@@ -10,6 +10,338 @@
                 "Asset": {
                     "ContentRootIndex": 0,
                     "SubPath": "add-icon.png"
+                },
+                "Patterns": null
+            },
+            "all_colors_icon.png": {
+                "Children": null,
+                "Asset": {
+                    "ContentRootIndex": 0,
+                    "SubPath": "all_colors_icon.png"
+                },
+                "Patterns": null
+            },
+            "artifact.svg": {
+                "Children": null,
+                "Asset": {
+                    "ContentRootIndex": 0,
+                    "SubPath": "artifact.svg"
+                },
+                "Patterns": null
+            },
+            "Artworks": {
+                "Children": {
+                    "Black": {
+                        "Children": {
+                            "art-1.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Black/art-1.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-2.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Black/art-2.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-3.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Black/art-3.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-4.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Black/art-4.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-5.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Black/art-5.jpg"
+                                },
+                                "Patterns": null
+                            }
+                        },
+                        "Asset": null,
+                        "Patterns": null
+                    },
+                    "Blue": {
+                        "Children": {
+                            "art-1.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Blue/art-1.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-2.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Blue/art-2.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-3.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Blue/art-3.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-4.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Blue/art-4.jpg"
+                                },
+                                "Patterns": null
+                            }
+                        },
+                        "Asset": null,
+                        "Patterns": null
+                    },
+                    "Green": {
+                        "Children": {
+                            "art-1.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Green/art-1.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-2.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Green/art-2.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-3.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Green/art-3.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-4.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Green/art-4.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-5.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Green/art-5.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-6.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Green/art-6.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-7.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Green/art-7.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-8.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Green/art-8.jpg"
+                                },
+                                "Patterns": null
+                            }
+                        },
+                        "Asset": null,
+                        "Patterns": null
+                    },
+                    "Red": {
+                        "Children": {
+                            "art-1.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Red/art-1.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-2.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Red/art-2.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-3.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Red/art-3.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-4.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Red/art-4.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-5.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Red/art-5.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-6.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/Red/art-6.jpg"
+                                },
+                                "Patterns": null
+                            }
+                        },
+                        "Asset": null,
+                        "Patterns": null
+                    },
+                    "White": {
+                        "Children": {
+                            "art-1.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/White/art-1.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-10.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/White/art-10.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-2.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/White/art-2.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-3.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/White/art-3.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-4.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/White/art-4.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-5.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/White/art-5.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-6.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/White/art-6.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-7.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/White/art-7.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-8.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/White/art-8.jpg"
+                                },
+                                "Patterns": null
+                            },
+                            "art-9.jpg": {
+                                "Children": null,
+                                "Asset": {
+                                    "ContentRootIndex": 0,
+                                    "SubPath": "Artworks/White/art-9.jpg"
+                                },
+                                "Patterns": null
+                            }
+                        },
+                        "Asset": null,
+                        "Patterns": null
+                    }
+                },
+                "Asset": null,
+                "Patterns": null
+            },
+            "card_icon.png": {
+                "Children": null,
+                "Asset": {
+                    "ContentRootIndex": 0,
+                    "SubPath": "card_icon.png"
+                },
+                "Patterns": null
+            },
+            "common_icon.png": {
+                "Children": null,
+                "Asset": {
+                    "ContentRootIndex": 0,
+                    "SubPath": "common_icon.png"
                 },
                 "Patterns": null
             },
@@ -145,11 +477,75 @@
                 "Asset": null,
                 "Patterns": null
             },
+            "dollar_symbol.png": {
+                "Children": null,
+                "Asset": {
+                    "ContentRootIndex": 0,
+                    "SubPath": "dollar_symbol.png"
+                },
+                "Patterns": null
+            },
+            "euro_symbol.png": {
+                "Children": null,
+                "Asset": {
+                    "ContentRootIndex": 0,
+                    "SubPath": "euro_symbol.png"
+                },
+                "Patterns": null
+            },
             "favicon.ico": {
                 "Children": null,
                 "Asset": {
                     "ContentRootIndex": 0,
                     "SubPath": "favicon.ico"
+                },
+                "Patterns": null
+            },
+            "forest.png": {
+                "Children": null,
+                "Asset": {
+                    "ContentRootIndex": 0,
+                    "SubPath": "forest.png"
+                },
+                "Patterns": null
+            },
+            "island.png": {
+                "Children": null,
+                "Asset": {
+                    "ContentRootIndex": 0,
+                    "SubPath": "island.png"
+                },
+                "Patterns": null
+            },
+            "mountain.png": {
+                "Children": null,
+                "Asset": {
+                    "ContentRootIndex": 0,
+                    "SubPath": "mountain.png"
+                },
+                "Patterns": null
+            },
+            "mythic_icon.png": {
+                "Children": null,
+                "Asset": {
+                    "ContentRootIndex": 0,
+                    "SubPath": "mythic_icon.png"
+                },
+                "Patterns": null
+            },
+            "plain.png": {
+                "Children": null,
+                "Asset": {
+                    "ContentRootIndex": 0,
+                    "SubPath": "plain.png"
+                },
+                "Patterns": null
+            },
+            "rare_icon.png": {
+                "Children": null,
+                "Asset": {
+                    "ContentRootIndex": 0,
+                    "SubPath": "rare_icon.png"
                 },
                 "Patterns": null
             },
@@ -166,6 +562,22 @@
                 "Asset": {
                     "ContentRootIndex": 0,
                     "SubPath": "save.png"
+                },
+                "Patterns": null
+            },
+            "swamp.png": {
+                "Children": null,
+                "Asset": {
+                    "ContentRootIndex": 0,
+                    "SubPath": "swamp.png"
+                },
+                "Patterns": null
+            },
+            "uncommon_icon.png": {
+                "Children": null,
+                "Asset": {
+                    "ContentRootIndex": 0,
+                    "SubPath": "uncommon_icon.png"
                 },
                 "Patterns": null
             },

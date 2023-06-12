@@ -3,6 +3,188 @@
     display: flex;
     flex-wrap: wrap;
 }
+/* _content/BlazorApp/Pages/DeckDetails.razor.rz.scp.css */
+#cardsList[b-t5wop6o3pj] {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#deckFilters[b-t5wop6o3pj] {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    left: calc(50% - 170px);
+    position: relative;
+}
+
+.deckColors[b-t5wop6o3pj] {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#deckRarities[b-t5wop6o3pj] {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.rarityIconNotSelected[b-t5wop6o3pj] {
+    width: 30px;
+    height: 30px;
+    border: none;
+}
+
+.rarityIconSelected[b-t5wop6o3pj] {
+    width: 35px;
+    height: 35px;
+    border: 5px solid rgb(255, 255, 255, 0.5);
+    border-radius: 50%;
+}
+
+.colorIcon[b-t5wop6o3pj] {
+    cursor: pointer;
+    border: 5px solid rgb(255, 255, 255, 0.5);
+    border-radius: 50%;
+    background: white;
+}
+
+.rarityIcon[b-t5wop6o3pj] {
+    cursor: pointer;
+}
+
+.colorIconNotSelected[b-t5wop6o3pj] {
+    width: 30px;
+    height: 30px;
+    border: none;
+}
+
+.colorIconSelected[b-t5wop6o3pj] {
+    width: 35px;
+    height: 35px;
+    border: 5px solid white;
+    border-radius: 50%;
+}
+
+#nbCardsText[b-t5wop6o3pj] {
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 25px;
+}
+/* _content/BlazorApp/Pages/Decks.razor.rz.scp.css */
+#add-deck-textarea[b-vhkafj81x2] {
+    width: 90%;
+    height: 250px;
+    background-color: #d5ab5b;
+    color: #1E4174;
+    border-radius: 10px;
+}
+
+#button-area[b-vhkafj81x2] {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#error-msg-area[b-vhkafj81x2] {
+    height: 50px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#error-msg[b-vhkafj81x2] {
+    color: red;
+    font-weight: bold;
+}
+
+#success-msg[b-vhkafj81x2] {
+    color: green;
+    font-weight: bold;
+}
+
+#deck-title-input[b-vhkafj81x2] {
+    width: 90%;
+    background-color: #d5ab5b;
+    color: #1E4174;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.btn-grad[b-vhkafj81x2] {
+    background-image: linear-gradient(to right, #005C97 0%, #363795 51%, #005C97 100%);
+    margin: 10px;
+    padding: 15px 15px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 50px;
+    display: block;
+    border: 0px solid black;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
+
+.btn-grad:hover[b-vhkafj81x2] {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+#myDecks[b-vhkafj81x2] {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.yellowText[b-vhkafj81x2] {
+    color: #DDA94B;
+}
+
+#button[b-vhkafj81x2] {
+    background-image: linear-gradient(to right, #ffb347 0%, #ffcc33 51%, #ffb347 100%);
+    margin: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #1E4174;
+    box-shadow: 0 0 2px #eee;
+    border-radius: 10px;
+    display: block;
+    margin-top: 20px;
+}
+
+#button:hover[b-vhkafj81x2] {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+#button:disabled[b-vhkafj81x2] {
+    opacity: 0.5;
+}
+         
 /* _content/BlazorApp/Pages/Index.razor.rz.scp.css */
 #cardsList[b-w6l7chfipm] {
     display: flex;
@@ -22,14 +204,72 @@
     margin-bottom: 10px;
 }
 
-#searchInput[b-dt9rz7amvs] {
-    width: 400px;
-    margin-right: 20px;
-}
-
 #cardsList[b-dt9rz7amvs] {
     display: flex;
     flex-wrap: wrap;
+}
+
+#grid-container[b-dt9rz7amvs] {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 20px;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    row-gap: 20px;
+    grid-template-areas:
+        "searchByName searchByName searchByName searchByName searchByName searchByName"
+        "nameInput nameInput nameInput nameButton nameButton nameButton"
+        "searchByCardAndSetCode searchByCardAndSetCode searchByCardAndSetCode searchByCardAndSetCode searchByCardAndSetCode searchByCardAndSetCode"
+        "cardCode cardCode setCode setCode codeButton codeButton";
+}
+
+#searchByNameText[b-dt9rz7amvs] {
+    grid-area: searchByName;
+    text-align: center;
+}
+
+#searchInput[b-dt9rz7amvs] {
+    grid-area: nameInput;
+    align-self: center;
+    justify-self: end;
+    height: 30px;
+    width: 300px;
+}
+
+#searchButton[b-dt9rz7amvs] {
+    grid-area: nameButton;
+    height: 30px;
+    width: 300px;
+    align-self: center;
+}
+
+#searchByCardAndSetCode[b-dt9rz7amvs] {
+    grid-area: searchByCardAndSetCode;
+    text-align: center;
+}
+
+#searchCardCode[b-dt9rz7amvs] {
+    grid-area: cardCode;
+    align-self: center;
+    height: 30px;
+    width: 300px;
+    justify-self: center;
+}
+
+#searchSetCode[b-dt9rz7amvs] {
+    grid-area: setCode;
+    align-self: center;
+    height: 30px;
+    width: 300px;
+    justify-self: center;
+}
+
+#searchButton2[b-dt9rz7amvs] {
+    grid-area: codeButton;
+    height: 30px;
+    width: 250px;
+    align-self: center;
+    justify-self: center;
 }
 /* _content/BlazorApp/Pages/Sets.razor.rz.scp.css */
 #setsList[b-a3777pej5v] {
@@ -331,6 +571,191 @@ body[b-a3777pej5v] {
         background: #7e9ec3;
         color: white;
     }
+/* _content/BlazorApp/Shared/DeckComponent.razor.rz.scp.css */
+:root[b-wmuzmig61b] {
+    --first-color: "green";
+    --second-color: "blue";
+    --third-color: "red";
+    --fourth-color: "white";
+    --fifth-color: "black";
+    --artworkTopMargin: 0;
+}
+
+@keyframes open-animate-b-wmuzmig61b {
+    0% {
+        transform: scale(1);
+        box-shadow: 0px 0px 0px 0px #656565;
+    }
+
+    100% {
+        transform: scale(1.05);
+        box-shadow: 4px 10px 5px 3px #656565;
+    }
+}
+
+@keyframes opacity-fade-b-wmuzmig61b {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}
+
+.deck[b-wmuzmig61b] {
+    height: 250px;
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+    border-radius: 10px;
+    /*background: url("/red-art-1.png");*/
+    background-size: 100%;
+}
+
+    /*.deck::before {
+        content: "";
+        background: url("/red-art-1.png");
+        background-size: 100%;
+        opacity: 0.5;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;
+    }*/
+
+    .deck:hover[b-wmuzmig61b] {
+        animation: open-animate-b-wmuzmig61b 1s both;
+    }
+
+.deckContentArea:hover[b-wmuzmig61b] {
+    /*background-color: lightgray;*/
+    cursor: pointer;
+}
+
+.deckTitleArea[b-wmuzmig61b] {
+    width: 100%;
+    max-height: 80px;
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px 10px 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.onecolor[b-wmuzmig61b] {
+    background-color: var(--first-color);
+}
+
+.twocolor[b-wmuzmig61b] {
+    background: var(--first-color);
+    background: linear-gradient(90deg, var(--first-color) 0%, var(--second-color) 100%);
+}
+
+.threecolor[b-wmuzmig61b] {
+    background: var(--first-color);
+    background: linear-gradient(90deg, var(--first-color) 0%, var(--second-color) 50%, var(--third-color) 100%);
+}
+
+.fourcolor[b-wmuzmig61b] {
+    background: var(--first-color);
+    background: linear-gradient(90deg, var(--first-color) 0%, var(--second-color) 33%, var(--third-color) 66%, var(--fourth-color) 100%);
+}
+
+.fivecolor[b-wmuzmig61b] {
+    background: var(--first-color);
+    background: linear-gradient(90deg, var(--first-color) 0%, var(--second-color) 25%, var(--third-color) 50%, var(--fourth-color) 75%, var(--fifth-color) 100%);
+}
+
+.deckTitle[b-wmuzmig61b] {
+    color: white;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 10px;
+    margin: 0px;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+.deckContentArea[b-wmuzmig61b] {
+    border: 2px solid black;
+    border-top: 0;
+    border-radius: 0px 0px 10px 10px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.deckColors[b-wmuzmig61b] {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.iconTextArea[b-wmuzmig61b] {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.icon[b-wmuzmig61b] {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.iconTextAreaText[b-wmuzmig61b] {
+    text-align: center;
+    padding-top: 10px;
+    margin: 0px;
+    font-weight: bold;
+}
+
+.deckText[b-wmuzmig61b] {
+    width: 100%;
+    padding-left: 10px;
+}
+
+
+.elevated[b-wmuzmig61b] {
+    position: relative;
+    z-index: 11;
+}
+
+#background-img[b-wmuzmig61b] {
+    margin-top: calc(var(--artworkTopMargin) * 1%);
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    z-index: 999;
+}
+
+#background-img:hover[b-wmuzmig61b] {
+    animation: opacity-fade-b-wmuzmig61b 1s both;
+}
 /* _content/BlazorApp/Shared/ExtensionComponent.razor.rz.scp.css */
 .cadre[b-ql2ujpon10] {
     display: flex;
@@ -547,6 +972,123 @@ main[b-3dsd3z3yec] {
     .collapse[b-7cxxmz0cwl] {
         /* Never collapse the sidebar for wide screens */
         display: block;
+    }
+}
+/* _content/BlazorApp/Shared/Popup.razor.rz.scp.css */
+@keyframes open-animate-b-mc4k4jz1to {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.0);
+    }
+}
+
+.popupOut[b-mc4k4jz1to] {
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100%;
+    z-index: 998;
+    position: fixed;
+    background-color: lightgray;
+    opacity: 0.5;
+}
+
+.popup[b-mc4k4jz1to] {
+    --popup-border-size: 0px;
+    --popup-box-shadow-color: 0, 36, 96;
+    border: var(--popup-border-size) solid #d4bb83;
+    /*border-radius: 25px;*/
+    animation: open-animate-b-mc4k4jz1to 1s ease;
+    /*box-shadow: rgba(172, 140, 88, 1) 2px 0px 10px inset, rgba(172, 140, 88, 1) 0px 2px 10px inset, rgba(172, 140, 88, 1) -2px 0px 10px inset, rgba(172, 140, 88, 1) 0px -2px 10px inset;*/
+    box-shadow: rgba(var(--popup-box-shadow-color), 1) 2px 0px 10px inset, rgba(var(--popup-box-shadow-color), 1) 0px 2px 10px inset, rgba(var(--popup-box-shadow-color), 1) -2px 0px 10px inset, rgba(var(--popup-box-shadow-color), 1) 0px -2px 10px inset;
+    position: fixed;
+    z-index: 9999;
+    /*background-color: lightgray;*/
+    background-color: #1E4174;
+    width: 500px;
+    height: 600px;
+    left: calc(50% - 250px);
+    top: calc(50% - 300px);
+    color: black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    -webkit-box-shadow: 10px 15px 5px 3px #656565;
+    -moz-box-shadow: 10px 15px 5px 3px #656565;
+    zoom:1;
+    box-shadow: 10px 15px 5px 3px #656565;
+}
+
+.popup-title[b-mc4k4jz1to] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: calc(100% - 50px);
+    height: 100px;
+
+    text-align: center;
+
+    color: #DDA94B;
+
+    padding-left: 50px;
+}
+
+.popup-content[b-mc4k4jz1to] {
+    width: 100%;
+    /*height: calc(100% - 100px);*/
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    margin: auto;
+}
+
+.popup-close-icon[b-mc4k4jz1to] {
+    z-index: 1;
+
+    margin-top: 20px;
+    margin-right: 20px;
+
+    width: 30px;
+    height: 30px;
+}
+
+.popup-close-icon:hover[b-mc4k4jz1to] {
+    cursor: pointer;
+}
+/* _content/BlazorApp/Shared/Spinner.razor.rz.scp.css */
+.spinner[b-004tm7gnzq] {
+    border: 16px solid silver;
+    border-top: 16px solid #337AB7;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin-b-004tm7gnzq 700ms linear infinite;
+    top: 40%;
+    left: 55%;
+    position: absolute;
+}
+
+@keyframes spin-b-004tm7gnzq {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
     }
 }
 /* _content/BlazorApp/Shared/Topbar.razor.rz.scp.css */
