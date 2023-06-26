@@ -167,7 +167,7 @@ namespace BlazorApp.Pages
 							|| (CssClassGreen.Contains("colorIconSelected") && value.Value.card.Colors.Contains(ECardColor.GREEN) && value.Value.card.Colors.Count() == 1)
 							|| (CssClassRed.Contains("colorIconSelected") && value.Value.card.Colors.Contains(ECardColor.RED) && value.Value.card.Colors.Count() == 1)
 							|| (CssClassBicolor.Contains("colorIconSelected") && value.Value.card.Colors.Count() > 1)
-							|| (CssClassArtifact.Contains("colorIconSelected") && value.Value.card.Colors.Count() == 0)
+							|| (CssClassArtifact.Contains("colorIconSelected") && (value.Value.card.Colors.Count() == 0 || value.Value.card.Colors.Contains(ECardColor.ARTIFACT)))
 							)
 					);
 

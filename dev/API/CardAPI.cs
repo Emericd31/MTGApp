@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Reflection;
 using BlazorApp.Data;
 using BlazorApp.Pages;
@@ -23,7 +24,6 @@ namespace BlazorApp.API
 				var cardsResult = new List<Card>();
 
 				using var client = new HttpClient();
-
 
 				var uri = new Uri(url);
 				var requestResult = client.GetStringAsync(uri).Result;
@@ -55,13 +55,87 @@ namespace BlazorApp.API
 						}
 						var cardName = card.name.Value;
 
+						// Gets card rarity
+						string jsonCardRarity = card.rarity.Value;
+						var cardRarity = ECardRarity.UNKNWOWN;
+						if (Enum.TryParse<ECardRarity>(jsonCardRarity.ToUpper(), out ECardRarity currentCardRarity))
+							cardRarity = currentCardRarity;
+
+						// Gets card colors
+						var cardColors = new List<ECardColor>();
+						try
+						{
+							var jsonCardColors = card.mana_cost.Value;
+
+							if (jsonCardColors.Contains("G"))
+								cardColors.Add(ECardColor.GREEN);
+							if (jsonCardColors.Contains("U"))
+								cardColors.Add(ECardColor.BLUE);
+							if (jsonCardColors.Contains("R"))
+								cardColors.Add(ECardColor.RED);
+							if (jsonCardColors.Contains("W"))
+								cardColors.Add(ECardColor.WHITE);
+							if (jsonCardColors.Contains("B"))
+								cardColors.Add(ECardColor.BLACK);
+						}
+						catch
+						{
+							// Do Nothing
+						}
+
+						if (cardColors.Count == 0)
+						{
+							try
+							{
+								var jsonCardColors = card.color_identity;
+								string[] arrayColors = jsonCardColors.ToObject<string[]>();
+								List<string> listColors = arrayColors.ToList();
+
+								if (listColors.Contains("G"))
+									cardColors.Add(ECardColor.GREEN);
+								if (listColors.Contains("U"))
+									cardColors.Add(ECardColor.BLUE);
+								if (listColors.Contains("R"))
+									cardColors.Add(ECardColor.RED);
+								if (listColors.Contains("W"))
+									cardColors.Add(ECardColor.WHITE);
+								if (listColors.Contains("B"))
+									cardColors.Add(ECardColor.BLACK);
+							}
+							catch (Exception ex)
+							{
+								// Do Nothing
+							}
+						}
+
+						// Get description
+						var text = "No text";
+						try
+						{
+							text = card.oracle_text.Value;
+						}
+						catch
+						{
+							// Do nothing
+						}
+
+						if (cardColors.Count == 0)
+							cardColors.Add(ECardColor.ARTIFACT);
+
 						var cardId = card.id.Value;
+
+						// Gets keywords
+						var jsonCardKeywords = card.keywords;
+						string[] arrayKeywords = jsonCardKeywords.ToObject<string[]>();
+
+						// Gets artist
+						var artist = card.artist.Value;
 
 						Price cardPrice = new Price(card.prices.usd.Value, card.prices.usd_foil.Value, card.prices.eur.Value, card.prices.eur_foil.Value);
 
 						var setCode = card.set.Value;
 
-						cardsResult.Add(new Card(cardId, cardName, imgUrl, cardPrice, setCode));
+						cardsResult.Add(new Card(cardId, cardName, text, artist, imgUrl, cardPrice, setCode, cardColors, cardRarity, arrayKeywords.ToList()));
 					}
 				}
 
@@ -133,6 +207,125 @@ namespace BlazorApp.API
 					return (new List<Card>(), 0);
 				}
 
+			}).Result;
+		}
+
+		/// <summary>Gets a card by it's unique identifier.</summary>
+		/// <param name="uid">Unique identifier.</param>
+		/// <returns></returns>
+		public static async Task<Card?> GetCard(string uid)
+		{
+			return Task.Run(async () =>
+			{
+				try
+				{
+					Card? result = null;
+					using var client = new HttpClient();
+
+					var uri = new Uri("https://api.scryfall.com/cards/" + uid);
+					var requestResult = client.GetStringAsync(uri).Result;
+
+					JsonTextReader reader = new JsonTextReader(new StringReader(requestResult));
+					dynamic? card = JsonConvert.DeserializeObject(requestResult);
+
+					if (card != null)
+					{
+						// Gets card img URL
+						var imgUrl = card.image_uris?.normal.Value;
+						if (imgUrl == null)
+						{
+							imgUrl = card.card_faces[0]?.image_uris?.normal.Value;
+						}
+						var cardName = card.name.Value;
+
+						// Gets card rarity
+						string jsonCardRarity = card.rarity.Value;
+						var cardRarity = ECardRarity.UNKNWOWN;
+						if (Enum.TryParse<ECardRarity>(jsonCardRarity.ToUpper(), out ECardRarity currentCardRarity))
+							cardRarity = currentCardRarity;
+
+						// Gets card colors
+						var cardColors = new List<ECardColor>();
+						try
+						{
+							var jsonCardColors = card.mana_cost.Value;
+
+							if (jsonCardColors.Contains("G"))
+								cardColors.Add(ECardColor.GREEN);
+							if (jsonCardColors.Contains("U"))
+								cardColors.Add(ECardColor.BLUE);
+							if (jsonCardColors.Contains("R"))
+								cardColors.Add(ECardColor.RED);
+							if (jsonCardColors.Contains("W"))
+								cardColors.Add(ECardColor.WHITE);
+							if (jsonCardColors.Contains("B"))
+								cardColors.Add(ECardColor.BLACK);
+						}
+						catch
+						{
+							// Do Nothing
+						}
+
+						if (cardColors.Count == 0)
+						{
+							try
+							{
+								var jsonCardColors = card.color_identity;
+								string[] arrayColors = jsonCardColors.ToObject<string[]>();
+								List<string> listColors = arrayColors.ToList();
+
+								if (listColors.Contains("G"))
+									cardColors.Add(ECardColor.GREEN);
+								if (listColors.Contains("U"))
+									cardColors.Add(ECardColor.BLUE);
+								if (listColors.Contains("R"))
+									cardColors.Add(ECardColor.RED);
+								if (listColors.Contains("W"))
+									cardColors.Add(ECardColor.WHITE);
+								if (listColors.Contains("B"))
+									cardColors.Add(ECardColor.BLACK);
+							}
+							catch (Exception ex)
+							{
+								// Do Nothing
+							}
+						}
+
+						if (cardColors.Count == 0)
+							cardColors.Add(ECardColor.ARTIFACT);
+
+						// Gets keywords
+						var jsonCardKeywords = card.keywords;
+						string[] arrayKeywords = jsonCardKeywords.ToObject<string[]>();
+
+						// Gets card id
+						var cardId = card.id.Value;
+
+						// Get description
+						var text = "No text";
+						try
+						{
+							text = card.oracle_text.Value;
+						}
+						catch
+						{
+							// Do nothing
+						}
+
+						// Gets artist
+						var artist = card.artist.Value;
+
+						Price cardPrice = new Price(card.prices.usd.Value, card.prices.usd_foil.Value, card.prices.eur.Value, card.prices.eur_foil.Value);
+						var setCode = card.set.Value;
+
+						result = new Card(cardId, cardName, text, artist, imgUrl, cardPrice, setCode, colors: cardColors, rarity: cardRarity, keywords: arrayKeywords.ToList());
+					}
+					return result;
+				}
+				catch
+				{
+					return null;
+				}
 			}).Result;
 		}
 
@@ -218,13 +411,34 @@ namespace BlazorApp.API
 							}
 						}
 
+						if (cardColors.Count == 0)
+							cardColors.Add(ECardColor.ARTIFACT);
+
 						// Gets card id
 						var cardId = card.id.Value;
+
+						// Get description
+						var text = "No text";
+						try
+						{
+							text = card.oracle_text.Value;
+						}
+						catch
+						{
+							// Do nothing
+						}
+
+						// Gets keywords
+						var jsonCardKeywords = card.keywords;
+						string[] arrayKeywords = jsonCardKeywords.ToObject<string[]>();
+
+						// Gets artist
+						var artist = card.artist.Value;
 
 						Price cardPrice = new Price(card.prices.usd.Value, card.prices.usd_foil.Value, card.prices.eur.Value, card.prices.eur_foil.Value);
 						var setCode = card.set.Value;
 
-						result = new Card(cardId, cardName, imgUrl, cardPrice, setCode, colors: cardColors, rarity: cardRarity);
+						result = new Card(cardId, cardName, text, artist, imgUrl, cardPrice, setCode, colors: cardColors, rarity: cardRarity, arrayKeywords.ToList());
 					}
 					return result;
 				}

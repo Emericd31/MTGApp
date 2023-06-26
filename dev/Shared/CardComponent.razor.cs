@@ -90,7 +90,7 @@ namespace BlazorApp.Shared
 		{
 			if (Card != null)
 			{
-				DataService.Instance.MyCollection.ManageCard(Card, NbCardToAdd, ECollectionAction.ADD);
+				DataService.Instance.MyCollection.AddOrRemoveCard(Card, NbCardToAdd, ECollectionAction.ADD);
 				NbCardInCollection += NbCardToAdd;
 				NbCardToAdd = 1;
 				color = "#d4bb83";
@@ -103,7 +103,7 @@ namespace BlazorApp.Shared
 		{
 			if (Card != null)
 			{
-				DataService.Instance.MyCollection.ManageCard(Card, NbCardToRemove, ECollectionAction.REMOVE);
+				DataService.Instance.MyCollection.AddOrRemoveCard(Card, NbCardToRemove, ECollectionAction.REMOVE);
 				var nbCardRemoved = NbCardToRemove;
 				NbCardToRemove = 1;
 				NbCardInCollection -= nbCardRemoved;

@@ -1,13 +1,29 @@
 ﻿@inherits TopbarBase
 
 <div id="cadre">
+	<div id="buttons">
 	<div id="save" @onclick="Save">
-		<img src="./save.png" alt="Image" height="30" width="30" >
+			<img src="./save.png" alt="Image" height="30" width="30">
+		</div>
+		<div id="load_data" @onclick="LoadCollectionData">
+			<img src="./load_data.png" alt="Load Missing Data" height="30" width="30" />
+		</div>
+	</div>
+
+
 		@if (DisplaySaveText)
 		{
 			<p id="saveText">Saved</p>
 		}
+	@if (IsLoading)
+	{
+		<div class="reloadButton" style="width: 250px">
+			<LoadingBar Percentage="@Percentage" Text="@Text" />
+		</div>
+		<div id="popup-cancel-icon" @onclick="StopLoadingData">
+			<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 8 8"><path fill="#ab3e31" d="M4 0C1.79 0 0 1.79 0 4s1.79 4 4 4s4-1.79 4-4s-1.79-4-4-4zM2.5 1.78L4 3.28l1.5-1.5l.72.72L4.72 4l1.5 1.5l-.72.72L4 4.72l-1.5 1.5l-.72-.72L3.28 4l-1.5-1.5l.72-.72z" /></svg>
 	</div>
+	}
 
 	<p id="title">@Title</p>
 </div>

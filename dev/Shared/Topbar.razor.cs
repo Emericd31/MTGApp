@@ -1,4 +1,5 @@
 ﻿using System.Collections.Specialized;
+using BlazorApp.API;
 using BlazorApp.Data;
 using BlazorApp.Helpers;
 using Microsoft.AspNetCore.Components;
@@ -38,6 +39,18 @@ namespace BlazorApp.Shared
 		/// <summary>Title.</summary>
 		protected string Title { get; set; } = "";
 
+		/// <summary>Percentage of scanned cards.</summary>
+		protected int Percentage { get; set; }
+
+		/// <summary>Boolean indicating if data loading action is in progress.</summary>
+		protected bool IsLoading { get; set; }
+
+		/// <summary>Displayed text when data loading action is in progress.</summary>
+		protected string? Text { get; set; }
+
+		/// <summary>Cancellation token to stop a loading action in progress.</summary>
+		protected CancellationTokenSource CancellationToken { get; set; } = new CancellationTokenSource();
+
 		#endregion
 
 		#region Constructor.
@@ -46,13 +59,25 @@ namespace BlazorApp.Shared
 		public TopbarBase()
 		{
 			Title = NbCards + " Cartes possédées (" + Math.Abs(EURPrice).ToString("0.##") + "€ avec " + EURCardNotValued + " cartes sans prix, " + Math.Abs(USDPrice).ToString("0.##") + "$ avec " + USDCardNotValued + " cartes sans prix)";
-			DataService.Instance.MyCollection.Cards.CollectionChanged += HandleChange;
+			DataService.Instance.MyCollection.Cards.PropertyChanged += Cards_PropertyChanged;
 			// Create a timer and set a two second interval.
 			_displayTimer = new System.Timers.Timer();
 			_displayTimer.Interval = 1500;
 
 			// Hook up the Elapsed event for the timer. 
 			_displayTimer.Elapsed += OnDisplayTimerElapsed;
+		}
+
+		/// <summary>Method called when card property change in collection.</summary>
+		/// <param name="_">Parameter not used.</param>
+		/// <param name="__">Parameter not used.</param>
+		private void Cards_PropertyChanged(object? _, System.ComponentModel.PropertyChangedEventArgs __)
+		{
+			InvokeAsync(() =>
+			{
+				Title = NbCards + " Cartes possédées (" + Math.Abs(EURPrice).ToString("0.##") + "€ avec " + EURCardNotValued + " cartes sans prix, " + Math.Abs(USDPrice).ToString("0.##") + "$ avec " + USDCardNotValued + " cartes sans prix)";
+				StateHasChanged();
+			});
 		}
 
 		#endregion
@@ -67,18 +92,6 @@ namespace BlazorApp.Shared
 			DisplaySaveText = false;
 			InvokeAsync(() => StateHasChanged());
 			_displayTimer?.Stop();
-		}
-
-		/// <summary>Method called when collection changed.</summary>
-		/// <param name="_">Parameter not used.</param>
-		/// <param name="__">Parameter not used.</param>
-		private void HandleChange(object _, NotifyCollectionChangedEventArgs __)
-		{
-			InvokeAsync(() =>
-			{
-				Title = NbCards + " Cartes possédées (" + Math.Abs(EURPrice).ToString("0.##") + "€ avec " + EURCardNotValued + " cartes sans prix, " + Math.Abs(USDPrice).ToString("0.##") + "$ avec " + USDCardNotValued + " cartes sans prix)";
-				StateHasChanged();
-			});
 		}
 
 		#endregion
@@ -99,6 +112,62 @@ namespace BlazorApp.Shared
 				DisplaySaveText = true;
 				_displayTimer.Start();
 			}
+		}
+
+		/// <summary>Stop loading data.</summary>
+		protected void StopLoadingData()
+		{
+			CancellationToken.Cancel();
+		}
+
+		/// <summary>Loads missing data.</summary>
+		protected async Task LoadCollectionData()
+		{
+			try
+			{
+				IsLoading = true;
+				Percentage = 0;
+				var currentCards = 0;
+				var totalCards = DataService.Instance.MyCollection.Cards.Count();
+				Text = $"0/{totalCards}";
+				foreach (var card in DataService.Instance.MyCollection.Cards.ToList())
+				{
+					if (CancellationToken.IsCancellationRequested)
+					{
+						CancellationToken = new CancellationTokenSource();
+						break;
+					}
+					if (card.Value.card.Colors.Count() == 0 || card.Value.card.Rarity == ECardRarity.UNKNWOWN || string.IsNullOrEmpty(card.Value.card.Text) || !card.Value.card.KeywordsInitialized || string.IsNullOrEmpty(card.Value.card.Artist))
+					{
+						var cardResult = CardAPI.GetCard(card.Value.card.UID).Result;
+						if (cardResult != null)
+							DataService.Instance.MyCollection.EditCard(card.Value.card.UID, cardResult, updatePrice: false);
+
+						await Task.Delay(50);
+					}
+
+					currentCards++;
+					UpdatePercentage(currentCards, totalCards);
+					await Task.Delay(1);
+				}
+				IsLoading = false;
+
+			}
+			catch (Exception ex)
+			{
+
+			}
+		}
+
+		/// <summary>Updates loading data percentage.</summary>
+		/// <param name="currentCards">Current number of scanned cards.</param>
+		/// <param name="totalCards">Total number of scanned cards.</param>
+		private async Task UpdatePercentage(int currentCards, int totalCards)
+		{
+			Percentage = currentCards * 100 / totalCards;
+			Text = $"{currentCards}/{totalCards}";
+			StateHasChanged();
+			await Task.Delay(1);
 		}
 
 		#endregion

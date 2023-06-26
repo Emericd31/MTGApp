@@ -21,7 +21,7 @@ namespace BlazorApp.Helpers
 					DataService.Instance.MyCollection.Name = collectionFile.Name;
 					DataService.Instance.MyCollection.Description = collectionFile.Description;
 					foreach (var card in collectionFile.Cards)
-						DataService.Instance.MyCollection.ManageCard(card.Value.card, card.Value.nbCard, ECollectionAction.ADD);
+						DataService.Instance.MyCollection.AddOrRemoveCard(card.Value.card, card.Value.nbCard, ECollectionAction.ADD);
 				}
 			}
 		}

@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using BlazorApp.Data;
 @inherits IndexBase
 
 <PageTitle>Index</PageTitle>
@@ -10,11 +11,11 @@
 	<br />
 	@if (Collection.Count() == 0)
 	{
-		<p>Elle ne contient pas encore de carte. Vous pouvez en ajouter via l'onglet "Extensions" ou en importer grâce à un fichier .json.</p>
+	<p>Elle ne contient pas encore de carte. Vous pouvez en ajouter via l'onglet "Extensions" ou en importer grâce à un fichier .json.</p>
 	}
 	else if (Collection.Count() == 1 && Collection.ElementAt(0).Value.nb == 1)
 	{
-		<p>Votre collection contient actuellement 1 carte</p>
+	<p>Votre collection contient actuellement 1 carte</p>
 	}
 	else
 	{
@@ -22,9 +23,38 @@
 	}
 </p>
 
+@if (Collection.Count() > 1)
+{
+	<div id="deckFilters">
+		<div class="deckColors">
+			<img class="colorIcon @CssClassBicolor" @onclick="@(() => DisplayColor(ECardColor.BICOLOR))" src="/all_colors_icon.png" alt="add" height="30" width="30" />
+
+			<img class="colorIcon @CssClassGreen" @onclick="@(() => DisplayColor(ECardColor.GREEN))" src="/forest.png" alt="add" />
+
+			<img class="colorIcon @CssClassBlue" @onclick="@(() => DisplayColor(ECardColor.BLUE))" src="/island.png" alt="add" />
+
+			<img class="colorIcon @CssClassRed" @onclick="@(() => DisplayColor(ECardColor.RED))" src="/mountain.png" alt="add" />
+
+			<img class="colorIcon @CssClassWhite" @onclick="@(() => DisplayColor(ECardColor.WHITE))" src="/plain.png" alt="add" />
+
+			<img class="colorIcon @CssClassBlack" @onclick="@(() => DisplayColor(ECardColor.BLACK))" src="/swamp.png" alt="add" />
+
+			<img class="colorIcon @CssClassArtifact" @onclick="@(() => DisplayColor(ECardColor.ARTIFACT))" src="/artifact.svg" alt="add" />
+
+		</div>
+		<div id="deckRarities">
+			<img class="rarityIcon @CssClassCommon" @onclick="@(() => DisplayRarity(ECardRarity.COMMON))" src="/common_icon.png" height="35" width="35" />
+			<img class="rarityIcon @CssClassUncommon" @onclick="@(() => DisplayRarity(ECardRarity.UNCOMMON))" src="/uncommon_icon.png" height="35" width="35" />
+			<img class="rarityIcon @CssClassRare" @onclick="@(() => DisplayRarity(ECardRarity.RARE))" src="/rare_icon.png" height="35" width="35" />
+			<img class="rarityIcon @CssClassMythic" @onclick="@(() => DisplayRarity(ECardRarity.MYTHIC))" src="/mythic_icon.png" height="35" width="35" />
+		</div>
+		<p id="nbCardsText">@NbDisplayedCards / @Collection?.Count()</p>
+	</div>
+}
+
 <div id="cardsList">
-	@for (int i = 0; i < Collection.Count(); i++)
+	@for (int i = 0; i < CollectionView.Count(); i++)
 	{
-		<CardComponent Card="@Collection.ElementAt(i).Value.card" AllowAddToCollection="false" AllowRemoveFromCollection="true" NbCardInCollection="@Collection.ElementAt(i).Value.nb" />
+		<CardComponent Card="@CollectionView.ElementAt(i).Value.card" AllowAddToCollection="false" AllowRemoveFromCollection="true" NbCardInCollection="@CollectionView.ElementAt(i).Value.nb" />
 	}
 </div>

@@ -158,7 +158,7 @@ namespace BlazorApp.Pages
 							if (card != null && int.TryParse(nbOfCopies, out int nbCard))
 							{
 								totalNumberOfCards += nbCard;
-								newDeck.ManageCard(card, nbCard, ECollectionAction.ADD);
+								newDeck.AddOrRemoveCard(card, nbCard, ECollectionAction.ADD);
 
 								if (card.Colors.Contains(ECardColor.GREEN) && !newDeck.Colors.Contains(ECardColor.GREEN))
 									newDeck.Colors.Add(ECardColor.GREEN);
