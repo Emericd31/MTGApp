@@ -12,10 +12,35 @@
 else
 {
 	<button @onclick="@(() => _nav.NavigateTo("/sets"))">Retour</button>
+	<div class="cardOwned">
+		<div id="filters">
+			<!-- Owned cards -->
+			<div class="checkboxGroup">
+				<label class="toggler-wrapper style-1">
+					<input type="checkbox" @bind="@DisplayOwnedCards">
+					<div class="toggler-slider">
+						<div class="toggler-knob"></div>
+					</div>
+				</label>
+				<p class="checkboxLabel">Cartes possédées</p>
+			</div>
+			<!-- Not owned cards -->
+			<div class="checkboxGroup">
+				<label class="toggler-wrapper style-1">
+					<input type="checkbox" @bind="@DisplayNotOwnedCards">
+					<div class="toggler-slider">
+						<div class="toggler-knob"></div>
+					</div>
+				</label>
+				<p class="checkboxLabel">Cartes non possédées</p>
+			</div>
+		</div>
+		<p id="nbCardsText">@DisplayedCards?.Count() / @Cards?.Count()</p>
+	</div>
 	<div id="cardsList">
-		@for (int i = 0; i < Cards.Count; i++)
+		@for (int i = 0; i < DisplayedCards?.Count; i++)
 		{
-			<CardComponent Card="@Cards[i]" AllowAddToCollection="true" AllowRemoveFromCollection="false" />
+			<CardComponent Card="@DisplayedCards[i]" AllowAddToCollection="true" AllowRemoveFromCollection="false" />
 		}
 	</div>
 }

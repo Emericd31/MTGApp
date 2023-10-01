@@ -6,7 +6,8 @@
 #deckFilters {
     display: flex;
     flex-wrap: wrap;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    color: white;
     width: 700px;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 20px;
@@ -109,31 +110,31 @@
     position: relative;
 }
 
-    .toggler-wrapper input[type="checkbox"] {
-        display: none;
-    }
+.toggler-wrapper input[type="checkbox"] {
+    display: none;
+}
 
-        .toggler-wrapper input[type="checkbox"]:checked + .toggler-slider {
-            background-color: #44cc66;
-        }
+.toggler-wrapper input[type="checkbox"]:checked + .toggler-slider {
+    background-color: #44cc66;
+}
 
-    .toggler-wrapper .toggler-slider {
-        background-color: #ccc;
-        position: absolute;
-        border-radius: 100px;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        -webkit-transition: all 300ms ease;
-        transition: all 300ms ease;
-    }
+.toggler-wrapper .toggler-slider {
+    background-color: #ccc;
+    position: absolute;
+    border-radius: 100px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
 
-    .toggler-wrapper .toggler-knob {
-        position: absolute;
-        -webkit-transition: all 300ms ease;
-        transition: all 300ms ease;
-    }
+.toggler-wrapper .toggler-knob {
+    position: absolute;
+    -webkit-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
 
 .checkboxGroup {
     display: flex;
@@ -155,10 +156,10 @@
     border: 1px #dadada solid;
 }
 
-    #checkboxes label {
-        display: block;
-    }
+#checkboxes label {
+    display: block;
+}
 
-        #checkboxes label:hover {
-            background-color: #1e90ff;
-        }
+#checkboxes label:hover {
+    background-color: #1e90ff;
+}

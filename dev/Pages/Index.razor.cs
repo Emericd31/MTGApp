@@ -88,17 +88,6 @@ namespace BlazorApp.Pages
 		/// <summary>Number of displayed cards.</summary>
 		protected int NbDisplayedCards { get; set; }
 
-		#endregion
-
-		#region Protected Methods
-
-		/// <summary>Method called when page is initialized.</summary>
-		protected override async Task OnInitializedAsync()
-		{
-			DataService.Instance.MyCollection.Cards.CollectionChanged += RefreshCollection;
-			//CollectionView = new Dictionary<string, (Card card, int nb)>(Collection);
-		}
-
 		/// <summary>Gets or sets <see cref="_displayCreatures"/>.</summary>
 		protected bool DisplayCreatures
 		{
@@ -209,6 +198,17 @@ namespace BlazorApp.Pages
 			}
 		}
 
+		#endregion Protected Properties
+
+		#region Protected Methods
+
+		/// <summary>Method called when page is initialized.</summary>
+		protected override async Task OnInitializedAsync()
+		{
+			DataService.Instance.MyCollection.Cards.CollectionChanged += RefreshCollection;
+			//CollectionView = new Dictionary<string, (Card card, int nb)>(Collection);
+		}
+
 		/// <summary>Displays specified rarity or not depending on actual state.</summary>
 		/// <param name="rarity">Rarity icon selected/unselected.</param>
 		protected void DisplayRarity(ECardRarity rarity)
@@ -277,7 +277,7 @@ namespace BlazorApp.Pages
 			}
 		}
 
-		#endregion
+		#endregion Protected Methods
 
 		#region Private Methods
 
@@ -379,6 +379,6 @@ namespace BlazorApp.Pages
 			NbDisplayedCards = CollectionView.Count();
 		}
 
-		#endregion
+		#endregion Private Methods
 	}
 }

@@ -62,7 +62,6 @@ namespace BlazorApp.Data
 		#region Public Methods
 
 		/// <summary>Initializes application's data.</summary>
-		/// <returns></returns>
 		public async Task InitializeData()
 		{
 			Instance.Sets = await SetAPI.GetSets().ConfigureAwait(false);
