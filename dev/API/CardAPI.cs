@@ -61,6 +61,9 @@ namespace BlazorApp.API
 						if (Enum.TryParse<ECardRarity>(jsonCardRarity.ToUpper(), out ECardRarity currentCardRarity))
 							cardRarity = currentCardRarity;
 
+						// Gets card types
+						var cardTypes = GetCardTypes(card);
+
 						// Gets card colors
 						var cardColors = new List<ECardColor>();
 						try
@@ -135,7 +138,7 @@ namespace BlazorApp.API
 
 						var setCode = card.set.Value;
 
-						cardsResult.Add(new Card(cardId, cardName, text, artist, imgUrl, cardPrice, setCode, cardColors, cardRarity, arrayKeywords.ToList()));
+						cardsResult.Add(new Card(cardId, cardName, text, artist, imgUrl, cardPrice, setCode, cardColors, cardRarity, arrayKeywords.ToList(), cardTypes));
 					}
 				}
 
@@ -210,6 +213,50 @@ namespace BlazorApp.API
 			}).Result;
 		}
 
+
+		/// <summary>Gets card types from json object.</summary>
+		/// <param name="json">Json object.</param>
+		/// <returns>List of <see cref="ECardType"/> card types.</returns>
+		private static List<ECardType> GetCardTypes(dynamic? json)
+		{
+			List<ECardType> cardTypes = new List<ECardType>();
+
+			try
+			{
+				var cardTypeJson = json?.type_line.Value;
+
+				if (string.IsNullOrEmpty(cardTypeJson))
+					cardTypes.Add(ECardType.UNKNOWN);
+				else
+				{
+					if (cardTypeJson?.ToLower().Contains("legendary"))
+						cardTypes.Add(ECardType.LEGENDARY);
+					if (cardTypeJson?.ToLower().Contains("planeswalker"))
+						cardTypes.Add(ECardType.PLANESWALKER);
+					if (cardTypeJson?.ToLower().Contains("siege"))
+						cardTypes.Add(ECardType.SIEGE);
+					if (cardTypeJson?.ToLower().Contains("creature"))
+						cardTypes.Add(ECardType.CREATURE);
+					if (cardTypeJson?.ToLower().Contains("instant"))
+						cardTypes.Add(ECardType.INSTANT);
+					if (cardTypeJson?.ToLower().Contains("sorcery"))
+						cardTypes.Add(ECardType.SORCERY);
+					if (cardTypeJson?.ToLower().Contains("enchantment"))
+						cardTypes.Add(ECardType.ENCHANTMENT);
+					if (cardTypeJson?.ToLower().Contains("land"))
+						cardTypes.Add(ECardType.LAND);
+					if (cardTypeJson?.ToLower().Contains("artifact"))
+						cardTypes.Add(ECardType.ARTIFACT);
+				}
+			}
+			catch
+			{
+				cardTypes.Add(ECardType.UNKNOWN);
+			}
+
+			return cardTypes;
+		}
+
 		/// <summary>Gets a card by it's unique identifier.</summary>
 		/// <param name="uid">Unique identifier.</param>
 		/// <returns></returns>
@@ -243,6 +290,9 @@ namespace BlazorApp.API
 						var cardRarity = ECardRarity.UNKNWOWN;
 						if (Enum.TryParse<ECardRarity>(jsonCardRarity.ToUpper(), out ECardRarity currentCardRarity))
 							cardRarity = currentCardRarity;
+
+						// Gets card types
+						var cardTypes = GetCardTypes(card);
 
 						// Gets card colors
 						var cardColors = new List<ECardColor>();
@@ -318,7 +368,7 @@ namespace BlazorApp.API
 						Price cardPrice = new Price(card.prices.usd.Value, card.prices.usd_foil.Value, card.prices.eur.Value, card.prices.eur_foil.Value);
 						var setCode = card.set.Value;
 
-						result = new Card(cardId, cardName, text, artist, imgUrl, cardPrice, setCode, colors: cardColors, rarity: cardRarity, keywords: arrayKeywords.ToList());
+						result = new Card(cardId, cardName, text, artist, imgUrl, cardPrice, setCode, colors: cardColors, rarity: cardRarity, keywords: arrayKeywords.ToList(), cardTypes);
 					}
 					return result;
 				}

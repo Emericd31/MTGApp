@@ -124,7 +124,8 @@ namespace BlazorApp.Data
 		/// <param name="updateText">Boolean indicating if text should be updated.</param>
 		/// <param name="updateKeywords">Boolean indicating if keywords should be updated.</param>
 		/// <param name="updateArtist">Boolean indicating if artist should be updated.</param>
-		public void EditCard(string cardUID, Card newCard, bool updateColor = true, bool updateRarity = true, bool updatePrice = true, bool updateText = true, bool updateKeywords = true, bool updateArtist = true)
+		/// <param name="updateTypes">Boolean indicating if card types should be updated.</param>
+		public void EditCard(string cardUID, Card newCard, bool updateColor = true, bool updateRarity = true, bool updatePrice = true, bool updateText = true, bool updateKeywords = true, bool updateArtist = true, bool updateTypes = true)
 		{
 			if (string.IsNullOrEmpty(cardUID))
 				return;
@@ -140,12 +141,15 @@ namespace BlazorApp.Data
 				// Updates colors if necesary
 				if (updateColor && currentCard.card.Colors.Count() == 0)
 				{
-					Console.WriteLine("J'update la couleurs");
 					if (newCard.Colors.Count() == 0)
 						currentCard.card.Colors.Add(ECardColor.ARTIFACT);
 					else
 						currentCard.card.Colors = newCard.Colors;
 				}
+
+				// Updates types if necesary
+				if (updateTypes)
+					currentCard.card.Types = newCard.Types;
 
 				// Updates keyword if necesary
 				if (updateKeywords)
@@ -165,7 +169,6 @@ namespace BlazorApp.Data
 				// Calculates new prices
 				if (updatePrice && newCard.Prices != null)
 				{
-					Console.WriteLine("J'update le prix");
 					var newPrices = CalculatesNewCardPrices(currentCard, newCard);
 					EURPrice += newPrices.EURPrice;
 					USDPrice += newPrices.USDPrice;

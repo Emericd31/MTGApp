@@ -41,4 +41,19 @@
 		MYTHIC,
 		BONUS
 	}
+
+	/// <summary>Possible values of card type.</summary>
+	public enum ECardType
+	{
+		UNKNOWN,
+		CREATURE,
+		SORCERY,
+		ENCHANTMENT,
+		INSTANT,
+		ARTIFACT,
+		SIEGE,
+		PLANESWALKER,
+		LAND,
+		LEGENDARY
+	}
 }

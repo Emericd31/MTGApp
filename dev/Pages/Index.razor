@@ -29,15 +29,15 @@
 		<div class="deckColors">
 			<img class="colorIcon @CssClassBicolor" @onclick="@(() => DisplayColor(ECardColor.BICOLOR))" src="/all_colors_icon.png" alt="add" height="30" width="30" />
 
-			<img class="colorIcon @CssClassGreen" @onclick="@(() => DisplayColor(ECardColor.GREEN))" src="/forest.png" alt="add" />
+			<img class="colorIcon @CssClassGreen" @onclick="@(() => DisplayColor(ECardColor.GREEN))" src="/forest_icon.png" alt="add" />
 
-			<img class="colorIcon @CssClassBlue" @onclick="@(() => DisplayColor(ECardColor.BLUE))" src="/island.png" alt="add" />
+			<img class="colorIcon @CssClassBlue" @onclick="@(() => DisplayColor(ECardColor.BLUE))" src="/island_test.png" alt="add" />
 
-			<img class="colorIcon @CssClassRed" @onclick="@(() => DisplayColor(ECardColor.RED))" src="/mountain.png" alt="add" />
+			<img class="colorIcon @CssClassRed" @onclick="@(() => DisplayColor(ECardColor.RED))" src="/mountain_icon.png" alt="add" />
 
-			<img class="colorIcon @CssClassWhite" @onclick="@(() => DisplayColor(ECardColor.WHITE))" src="/plain.png" alt="add" />
+			<img class="colorIcon @CssClassWhite" @onclick="@(() => DisplayColor(ECardColor.WHITE))" src="/plain_icon.png" alt="add" />
 
-			<img class="colorIcon @CssClassBlack" @onclick="@(() => DisplayColor(ECardColor.BLACK))" src="/swamp.png" alt="add" />
+			<img class="colorIcon @CssClassBlack" @onclick="@(() => DisplayColor(ECardColor.BLACK))" src="/black_mana.png" alt="add" />
 
 			<img class="colorIcon @CssClassArtifact" @onclick="@(() => DisplayColor(ECardColor.ARTIFACT))" src="/artifact.svg" alt="add" />
 
@@ -47,6 +47,115 @@
 			<img class="rarityIcon @CssClassUncommon" @onclick="@(() => DisplayRarity(ECardRarity.UNCOMMON))" src="/uncommon_icon.png" height="35" width="35" />
 			<img class="rarityIcon @CssClassRare" @onclick="@(() => DisplayRarity(ECardRarity.RARE))" src="/rare_icon.png" height="35" width="35" />
 			<img class="rarityIcon @CssClassMythic" @onclick="@(() => DisplayRarity(ECardRarity.MYTHIC))" src="/mythic_icon.png" height="35" width="35" />
+		</div>
+		<div class="cardTypes">
+			<!-- Creatures -->
+			<div class="checkboxGroup">
+				<label class="toggler-wrapper style-1">
+					<input type="checkbox" @bind="@DisplayCreatures">
+					<div class="toggler-slider">
+						<div class="toggler-knob"></div>
+					</div>
+				</label>
+				<p class="checkboxLabel">Creatures</p>
+			</div>
+			<!-- Rituels -->
+			<div class="checkboxGroup">
+				<label class="toggler-wrapper style-1">
+					<input type="checkbox" @bind="@DisplaySorcery">
+					<div class="toggler-slider">
+						<div class="toggler-knob"></div>
+					</div>
+				</label>
+				<p class="checkboxLabel">Rituels</p>
+			</div>
+			<!-- Enchantements -->
+			<div class="checkboxGroup">
+				<label class="toggler-wrapper style-1">
+					<input type="checkbox" @bind="@DisplayEnchantments">
+					<div class="toggler-slider">
+						<div class="toggler-knob"></div>
+					</div>
+				</label>
+				<p class="checkboxLabel">Enchantements</p>
+			</div>
+		</div>
+		<div class="cardTypes">
+			<!-- Instants -->
+			<div class="checkboxGroup">
+				<label class="toggler-wrapper style-1">
+					<input type="checkbox" @bind="@DisplayInstants">
+					<div class="toggler-slider">
+						<div class="toggler-knob"></div>
+					</div>
+				</label>
+				<p class="checkboxLabel">Instant</p>
+			</div>
+			<!-- Artéfacts -->
+			<div class="checkboxGroup">
+				<label class="toggler-wrapper style-1">
+					<input type="checkbox" @bind="@DisplayArtifacts">
+					<div class="toggler-slider">
+						<div class="toggler-knob"></div>
+					</div>
+				</label>
+				<p class="checkboxLabel">Artéfacts</p>
+			</div>
+			<!-- Siègees -->
+			<div class="checkboxGroup">
+				<label class="toggler-wrapper style-1">
+					<input type="checkbox" @bind="@DisplaySieges">
+					<div class="toggler-slider">
+						<div class="toggler-knob"></div>
+					</div>
+				</label>
+				<p class="checkboxLabel">Sièges</p>
+			</div>
+		</div>
+		<div class="cardTypes">
+			<!-- Planeswalkers -->
+			<div class="checkboxGroup">
+				<label class="toggler-wrapper style-1">
+					<input type="checkbox" @bind="@DisplayPlaneswalkers">
+					<div class="toggler-slider">
+						<div class="toggler-knob"></div>
+					</div>
+				</label>
+				<p class="checkboxLabel">Planeswalkers</p>
+			</div>
+			<!-- Terrains -->
+			<div class="checkboxGroup">
+				<label class="toggler-wrapper style-1">
+					<input type="checkbox" @bind="@DisplayLands">
+					<div class="toggler-slider">
+						<div class="toggler-knob"></div>
+					</div>
+				</label>
+				<p class="checkboxLabel">Terrains</p>
+			</div>
+			<!-- Légendaires -->
+			<div class="checkboxGroup">
+				<label class="toggler-wrapper style-1">
+					<input type="checkbox" @bind="@DisplayLegendaries">
+					<div class="toggler-slider">
+						<div class="toggler-knob"></div>
+					</div>
+				</label>
+				<p class="checkboxLabel">Légendaires</p>
+			</div>
+		</div>
+
+		<div class="cardTypes">
+			<!-- Inclusives -->
+			<div class="checkboxGroup">
+				<label class="toggler-wrapper style-1">
+					<input type="checkbox" @bind="@DisplayInclusives">
+					<div class="toggler-slider">
+						<div class="toggler-knob"></div>
+					</div>
+				</label>
+				<p class="checkboxLabel">Exclusif/Inclusif</p>
+			</div>
 		</div>
 		<p id="nbCardsText">@NbDisplayedCards / @Collection?.Count()</p>
 	</div>

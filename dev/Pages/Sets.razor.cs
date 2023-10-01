@@ -7,7 +7,7 @@ namespace BlazorApp.Pages
 	/// <summary>Class that handles data and treatment for Expansion page.</summary>
 	public class SetsBase : ComponentBase
 	{
-		#region Privates Properties
+		#region Private Properties
 
 		/// <summary>Boolean indicating if classic expansions are displayed.</summary>
 		private bool _displayExtension { get; set; }

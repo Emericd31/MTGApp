@@ -137,7 +137,7 @@ namespace BlazorApp.Shared
 						CancellationToken = new CancellationTokenSource();
 						break;
 					}
-					if (card.Value.card.Colors.Count() == 0 || card.Value.card.Rarity == ECardRarity.UNKNWOWN || string.IsNullOrEmpty(card.Value.card.Text) || !card.Value.card.KeywordsInitialized || string.IsNullOrEmpty(card.Value.card.Artist))
+					if (card.Value.card.Types.Count() == 0 || card.Value.card.Colors.Count() == 0 || card.Value.card.Rarity == ECardRarity.UNKNWOWN || string.IsNullOrEmpty(card.Value.card.Text) || !card.Value.card.KeywordsInitialized || string.IsNullOrEmpty(card.Value.card.Artist))
 					{
 						var cardResult = CardAPI.GetCard(card.Value.card.UID).Result;
 						if (cardResult != null)

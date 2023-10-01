@@ -21,6 +21,9 @@
 		/// <summary>Boolean indicating if keywords are initialized.</summary>
 		public bool KeywordsInitialized { get; set; }
 
+		/// <summary>List of card types.</summary>
+		public List<ECardType> Types { get; set; }
+
 		/// <summary>Prices.</summary>
 		public Price Prices { get; set; }
 
@@ -47,7 +50,8 @@
 		/// <param name="colors">Card colors.</param>
 		/// <param name="rarity">Card rarity.</param>
 		/// <param name="keywords">Keywords.</param>
-		public Card(string uid, string name, string text, string artist, string imgUrl, Price prices, string setCode, List<ECardColor>? colors = null, ECardRarity rarity = ECardRarity.UNKNWOWN, List<string>? keywords = null)
+		/// <param name="types">List of card types.</param>
+		public Card(string uid, string name, string text, string artist, string imgUrl, Price prices, string setCode, List<ECardColor>? colors = null, ECardRarity rarity = ECardRarity.UNKNWOWN, List<string>? keywords = null, List<ECardType>? types = null)
 		{
 			UID = uid;
 			Name = name;
@@ -60,6 +64,7 @@
 			Rarity = rarity;
 			Keywords = keywords == null ? new List<string>() : keywords;
 			KeywordsInitialized = true;
+			Types = types == null ? new List<ECardType>() : types;
 		}
 	}
 }
